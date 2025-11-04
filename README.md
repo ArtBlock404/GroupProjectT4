@@ -1,8 +1,8 @@
 # GroupProjectT4
 
-**Classification:** [Your Choice]
+**Classification:** Simple Game.
 
-**Pitch:** [One compelling sentence]
+**Pitch:** A fairytale puzzle game where you solve mechanisms and avoid obstacles.
 
 ![Class Diagram](class-diagram.png)
 ![UI Mockup](mockup.png)
@@ -14,5 +14,5 @@
 | `...` | ... |
 
 ## Group
-- Name (@github)
-- Name (@github)
+- Jonah White (@ArtBlock404)
+- Angie Liu (@angieliu4)
