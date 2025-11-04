@@ -6,6 +6,7 @@
 
 ![Class Diagram](class-diagram.png)
 ![UI Mockup](mockup.png)
+![Timeline](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/timeline.png?raw=true)
 
 ## Core Classes
 | Class | Role |
