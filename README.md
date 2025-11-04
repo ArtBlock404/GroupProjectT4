@@ -2,7 +2,7 @@
 
 **Classification:** Simple Game.
 
-**Pitch:** A fantatiscal fairytale puzzle game where you solve mechanisms and avoid obstacles playing as our mystical protagnist: Arden.
+**Pitch:** A fantatiscal fairytale puzzle game where you solve mechanisms and avoid obstacles playing as our mystical protagonist: Arden.
 
 ![Class Diagram](class-diagram.png)
 ![UI Mockup](mockup.png)
