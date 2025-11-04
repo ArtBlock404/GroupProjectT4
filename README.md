@@ -11,18 +11,18 @@
 ## Core Classes
 | Class | Role |
 |-------|------|
-| `Arden` | `setup()`, `draw()`, `display()`, `move()` |
-| `door` | `setup()`, `display()`, `open()` |
-| `rock` | `setup()`, `display()`, `move()` |
-| `ring` | `setup()`, `display()` |
-| `hedges` | `setup()`, `display()` |
-| `water` | `setup()`, `display()` |
-| `tall grass` | `setup()`, `display()`, `hide()` |
-| `arrow` | `setup()`, `display()`, `move()`, `damage()` |
-| `mud` | `setup()`, `display()` |
-| `shadow` | `setup()`, `display()`, `move()`, `damage()` |
-| `tile` | `setup()`, `display()` |
-| `displaytext` | `setup()`, `display()` |
+| `Arden` | The Player |
+| `door` | Can trigger mechanism to enter |
+| `rock` | Move to the ring |
+| `ring` | Triggers events |
+| `hedges` | Walls |
+| `water` | Hazard |
+| `tall grass` | Hides character |
+| `arrow` | Instant kill |
+| `mud` | Hazard |
+| `shadow` | Enemies |
+| `tile` | Used as triggers, damage, etc. |
+| `displaytext` | Tutorials, tips, dialouge |
 
 ## Group
 - Jonah White (@ArtBlock404)
