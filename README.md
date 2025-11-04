@@ -11,8 +11,18 @@
 ## Core Classes
 | Class | Role |
 |-------|------|
-| `Arden` | `setup()`, `draw()`, 'display()' |
-| `...` | ... |
+| `Arden` | `setup()`, `draw()`, `display()`, `move()` |
+| `door` | `setup()`, `display()`, `open()` |
+| `rock` | `setup()`, `display()`, `move()` |
+| `ring` | `setup()`, `display()` |
+| `hedges` | `setup()`, `display()` |
+| `water` | `setup()`, `display()` |
+| `tall grass` | `setup()`, `display()`, `hide()` |
+| `arrow` | `setup()`, `display()`, `move()`, `damge()` |
+| `mud` | `setup()`, `display()` |
+| `shadow` | `setup()`, `display()`, `move()`, `damamge()` |
+| `tile` | `setup()`, `display()` |
+| `displaytext` | `setup()`, `display()` |
 
 ## Group
 - Jonah White (@ArtBlock404)
