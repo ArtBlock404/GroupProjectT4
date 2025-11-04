@@ -11,7 +11,7 @@
 ## Core Classes
 | Class | Role |
 |-------|------|
-| `Main` | `setup()`, `draw()` |
+| `Arden` | `setup()`, `draw()`, 'display()' |
 | `...` | ... |
 
 ## Group
