@@ -18,9 +18,9 @@
 | `hedges` | `setup()`, `display()` |
 | `water` | `setup()`, `display()` |
 | `tall grass` | `setup()`, `display()`, `hide()` |
-| `arrow` | `setup()`, `display()`, `move()`, `damge()` |
+| `arrow` | `setup()`, `display()`, `move()`, `damage()` |
 | `mud` | `setup()`, `display()` |
-| `shadow` | `setup()`, `display()`, `move()`, `damamge()` |
+| `shadow` | `setup()`, `display()`, `move()`, `damage()` |
 | `tile` | `setup()`, `display()` |
 | `displaytext` | `setup()`, `display()` |
 
