@@ -22,7 +22,7 @@
 | `mud` | Hazard |
 | `shadow` | Enemies |
 | `tile` | Used as triggers, damage, etc. |
-| `displaytext` | Tutorials, tips, dialouge |
+| `displaytext` | Tutorials, tips, dialogue |
 
 ## Group
 - Jonah White (@ArtBlock404)
