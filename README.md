@@ -27,4 +27,4 @@
 ## Group
 - Jonah White (@ArtBlock404)
 - Angie Liu (@angieliu4)
-- Maizie Robson
+- Maizie Robson(@EMaizieR)
