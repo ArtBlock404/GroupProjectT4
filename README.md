@@ -11,17 +11,14 @@
 ## Core Classes
 | Class | Role |
 |-------|------|
-| `Arden` | The Player |
-| `door` | Can trigger mechanism to enter |
-| `rock` | Move to the ring |
-| `ring` | Triggers events |
-| `hedges` | Walls |
-| `water` | Hazard |
-| `tall grass` | Hides character |
-| `arrow` | Instant kill |
-| `mud` | Hazard |
-| `shadow` | Enemies |
-| `tile` | Used as triggers, damage, etc. |
+| `Player` | The Player |
+| `Tile` | Tiles that amke up the game maps and elements |
+| `TileType` | Determines tile properties|
+| `PushableTile` | moves when pushed |
+| `DoorTile` | Ends and changes the level |
+| `HazardTile` | Hazard |
+| `Button` | buttons for the title screen/settings |
+| `Grid` | Displays tile layout |
 | `displaytext` | Tutorials, tips, dialogue |
 
 ## Group
