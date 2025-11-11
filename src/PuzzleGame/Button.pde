@@ -1,60 +1,50 @@
-// Angie Liu | 6 Nov 2025 | Delarium
-
-Button[] buttons = new Button[2];
-
-
-void setup() {
-  size(800,900);
-  buttons[0] = new Button(400,500,400,400, true);
-  buttons[1] = new Button(600,650,100,100, false);
-  
-  
-}
-
-void draw() {
-  background(0);
-  for (int i = 0; i<buttons.length; i++) {
-    buttons[i].display();
-  }
-  textAlign(CENTER,CENTER);
-  textMode(CENTER);
-  fill(255);
-  textSize(70);
-  text("DELARIUM", 400,150);
-}
-
-
 class Button {
   //Member Variables
-  PImage p1, p2;
+  PImage p1;
   int x, y, w, h;
   color c1;
   String text;
-  boolean play;
-  
-  
+  char image;
+  boolean over;
+
+
   //Constructor
-  Button(int x, int y, int w, int h, boolean play) {
+  Button(int x, int y, int w, int h, char image) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-    this.play = play;
-    p1 = loadImage("https://www.freepnglogos.com/uploads/play-button-png/index-media-cover-art-play-button-overlay-5.png");
-    p2 = loadImage("https://img.icons8.com/m_rounded/512/FFFFFF/settings.png");
-    
+    image = ' ';
+    over = false;
+    if (image == 'P') {
+      p1 = loadImage("https://www.freepnglogos.com/uploads/play-button-png/index-media-cover-art-play-button-overlay-5.png");
+    } else if (image == 'S') {
+      p1 = loadImage("https://img.icons8.com/m_rounded/512/FFFFFF/settings.png");
+    } else if (image == 'B') {
+      p1 = loadImage("");
+    }
   }
-  
+
   //Member Methods
   void display() {
     imageMode(CENTER);
-    p1.resize(h,w);
-    p2.resize(h,w);
-    if(play == true) {
-    image(p1,x,y);
-    } else {
-      image(p2,x,y);
+    
+    if (image == 'P') {
+      p1.resize(h, w);
+      image(p1, x, y);
+    } else if (image == 'S') {
+      p1.resize(h, w);
+      image(p1, x, y);
+    } else if (image == 'B') {
+      p1.resize(h, w);
+      image(p1, x, y);
     }
   }
-  
+  void hover(int tempX, int tempY) {
+    if (x>tempX-w/2 && x<tempX+w/2 && y>tempY-h/2 && y<tempY+h/2) {
+      over = true;
+    } else {
+      over = false;
+    }
+  }
 }
