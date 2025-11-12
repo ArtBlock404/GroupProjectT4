@@ -73,6 +73,7 @@ void mousePressed() {
   }
 }
 void levelselect() {
+//takes you to the level select screen
   background(0);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -86,6 +87,7 @@ void levelselect() {
 }
 
 void settingscreen() {
+//takes you to the settings
   background(0);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -97,6 +99,7 @@ void settingscreen() {
 }
 
 void startscreen() {
+//Main menu
   background(0);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -111,6 +114,7 @@ void startscreen() {
 }
 
 void lvlone() {
+//where all of the grids and tiles and stuff are gonna show up
   background(0);
   grid.displayLayers(0, 2);
 
@@ -125,3 +129,4 @@ void lvlone() {
 
   grid.displayLayers(3, 3);
 }
+
