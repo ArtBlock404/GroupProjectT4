@@ -43,6 +43,6 @@ class PushableTile {
   }
 
   void display() {
-    image(sprite, x, y, size, size);
+    //image(sprite, x, y, size, size);
   }
 }
