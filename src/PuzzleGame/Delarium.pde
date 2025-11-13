@@ -3,17 +3,15 @@ import java.util.ArrayList;
 Grid grid;
 PImage[] tileSprites;
 Player player;
-Button[] buttons = new Button[5];
+Button[] buttons = new Button[3];
 char screen;
 
 void setup() {
   size(800, 900);
-  screen = ' ';
+  screen = 'M';
   buttons[0] = new Button(400, 400, 400, 100, "PLAY");
   buttons[1] = new Button(400, 550, 400, 100, "SETTINGS");
   buttons[2] = new Button(100, 825, 150, 100, "BACK");
-  buttons[3] = new Button(100, 825, 150, 100, "BACK");
-  buttons[4] = new Button(400, 400, 400, 100, "LEVEL ONE");
   
   tileSprites = new PImage[10];
   tileSprites[0] = loadImage("Test.png"); // example
@@ -41,14 +39,16 @@ void setup() {
 }
 
 void draw() {
-  if (screen == ' ') {
+  for (int i = 0; i<buttons.length; i++) {
+    buttons[i].display();
+    buttons[i].hover(mouseX, mouseY);
+  }
+  if (screen == 'M') {
     startscreen();
   } else if (screen == 'L') {
-    levelselect();
+    one();
   } else if (screen == 'S') {
     settingscreen();
-  } else if (screen == '1') {
-    lvlone();
   }
 }
 
@@ -65,29 +65,13 @@ void mousePressed() {
   } else if (buttons[1].over == true) {
     screen = 'S';
   } else if (buttons[2].over == true) {
-    screen = ' ';
-  } else if (buttons[3].over == true) {
-    screen = ' ';
-  } else if (buttons[4].over == true) {
-    screen = '1';
-  }
-}
-void levelselect() {
-//takes you to the level select screen
-  background(0);
-  fill(255);
-  textAlign(CENTER, CENTER);
-  textMode(CENTER);
-  textSize(70);
-  text("LEVEL SELECT", 400, 100);
-  buttons[3].display();
-  buttons[3].hover(mouseX, mouseY);
-  buttons[4].display();
-  buttons[4].hover(mouseX, mouseY);
+    screen = 'M';
+  }  
+  println("screen:" + screen);
 }
 
+
 void settingscreen() {
-//takes you to the settings
   background(0);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -99,22 +83,19 @@ void settingscreen() {
 }
 
 void startscreen() {
-//Main menu
   background(0);
   fill(255);
   textAlign(CENTER, CENTER);
   textMode(CENTER);
   textSize(70);
   text("DELARIUM", 400, 100);
-
   buttons[0].display();
   buttons[0].hover(mouseX, mouseY);
   buttons[1].display();
   buttons[1].hover(mouseX, mouseY);
 }
 
-void lvlone() {
-//where all of the grids and tiles and stuff are gonna show up
+void one() {
   background(0);
   grid.displayLayers(0, 2);
 
@@ -129,4 +110,3 @@ void lvlone() {
 
   grid.displayLayers(3, 3);
 }
-
