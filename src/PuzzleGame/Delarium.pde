@@ -8,14 +8,17 @@ PImage[] tileSprites;
 Player player;
 Button[] buttons = new Button[3];
 char screen;
+PImage p2;
 
 void setup() {
   size(800, 900);
   screen = 'M';
 //Buttons
-  buttons[0] = new Button(200, 300, 400, 400, "PLAY");
-  buttons[1] = new Button(650, 750, 150, 150, "SETTINGS");
-  buttons[2] = new Button(50, 50, 75, 75, "BACK");
+  buttons[0] = new Button(400, 350, 400,140, "PLAY");
+  buttons[1] = new Button(400, 550, 250, 100, "SETTINGS");
+  buttons[2] = new Button(50, 50, 100, 100, "BACK");
+  
+  p2 = loadImage("settings.png");
   
   tileSprites = new PImage[10];
   tileSprites[0] = loadImage("Test.jpeg"); // example
@@ -81,10 +84,8 @@ void settingscreen() {
 //The settings screen
   background(0);
   fill(255);
-  textAlign(CENTER, CENTER);
-  textMode(CENTER);
-  textSize(70);
-  text("SETTINGS", 400, 100);
+  image(p2,150,50);
+  p2.resize(500,150);
   buttons[2].display();
   buttons[2].hover(mouseX, mouseY);
 }
@@ -119,4 +120,3 @@ void one() {
 
   grid.displayLayers(3, 3);
 }
-
