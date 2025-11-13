@@ -34,7 +34,7 @@ class Button {
     } else if (val.equals("SETTINGS")) {
       p2.resize(w,h);
       image(p2, x, y);
-    } else if (val.equals("PLAY")) {
+    } else if (val.equals("BACK")) {
       p3.resize(w,h);
       image(p3, x, y);
     }
