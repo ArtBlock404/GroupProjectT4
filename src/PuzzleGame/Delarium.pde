@@ -13,9 +13,9 @@ void setup() {
   size(800, 900);
   screen = 'M';
 //Buttons
-  buttons[0] = new Button(400, 500, 400, 400, "PLAY");
-  buttons[1] = new Button(400, 825, 100, 100, "SETTINGS");
-  buttons[2] = new Button(100, 800, 150, 150, "BACK");
+  buttons[0] = new Button(200, 300, 400, 400, "PLAY");
+  buttons[1] = new Button(650, 750, 150, 150, "SETTINGS");
+  buttons[2] = new Button(50, 50, 75, 75, "BACK");
   
   tileSprites = new PImage[10];
   tileSprites[0] = loadImage("Test.jpeg"); // example
@@ -119,3 +119,4 @@ void one() {
 
   grid.displayLayers(3, 3);
 }
+
