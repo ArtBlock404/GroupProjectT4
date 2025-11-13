@@ -9,6 +9,7 @@ char screen;
 void setup() {
   size(800, 900);
   screen = 'M';
+//Buttons
   buttons[0] = new Button(400, 400, 400, 100, "PLAY");
   buttons[1] = new Button(400, 550, 400, 100, "SETTINGS");
   buttons[2] = new Button(100, 825, 150, 100, "BACK");
@@ -21,6 +22,7 @@ void setup() {
   int tileSize = 800 / cols;
   int offsetY = 100;
 
+//Grid
   grid = new Grid(cols, rows, tileSize, offsetY, tileSprites);
 
 
@@ -53,6 +55,7 @@ void draw() {
 }
 
 void keyPressed() {
+//Player movement
   if (key == 'w' || key == 'W' || keyCode == UP) player.move(0, -1);
   if (key == 's' || key == 'S' || keyCode == DOWN) player.move(0, 1);
   if (key == 'a' || key == 'A' || keyCode == LEFT) player.move(-1, 0);
@@ -72,6 +75,7 @@ void mousePressed() {
 
 
 void settingscreen() {
+//The settings screen
   background(0);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -83,6 +87,7 @@ void settingscreen() {
 }
 
 void startscreen() {
+//Main menu
   background(0);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -96,6 +101,7 @@ void startscreen() {
 }
 
 void one() {
+//where all of the game content will show up
   background(0);
   grid.displayLayers(0, 2);
 
@@ -110,3 +116,4 @@ void one() {
 
   grid.displayLayers(3, 3);
 }
+
