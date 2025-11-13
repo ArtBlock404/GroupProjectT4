@@ -8,7 +8,7 @@ class Button {
 
 
   //Constructor
-  Button(int x, int y, int w, int h, String val) {
+  Button(int x, int y,int w, int h, String val) {
     this.x = x;
     this.y = y;
     this.w = w;
@@ -17,25 +17,22 @@ class Button {
     //image = ' ';
     over = false;
     if (val.equals("PLAY")) {
-      p1 = loadImage("playbutton.png");
+      p1 = loadImage("play.png");
     } else if (val.equals("SETTINGS")) {
-      p2 = loadImage("settingsicon.png");
+      p2 = loadImage("settings.png");
     } else if (val.equals("BACK")) {
-      p3 = loadImage("backarrow.png");
+      p3 = loadImage("back.png");
     }
   }
 
   //Member Methods
   void display() {
     if (val.equals("PLAY")) {
-      p1.resize(w,h);
-      image(p1, 200, 250);
+      image(p1, 200, 300);
     } else if (val.equals("SETTINGS")) {
-      p2.resize(w,h);
-      image(p2, 300, 600);
+      image(p2, 225, 525);
     } else if (val.equals("BACK")) {
-      p3.resize(w,h);
-      image(p3, x, y);
+      image(p3, 25, 25);
     }
   }
   void hover(int tempX, int tempY) {
