@@ -1,4 +1,5 @@
 //guys, press play to be able to see the grid, enemies, player, etc.
+//if you scroll all the way to the bottom there will be a method called void one(); where we will put all of the game content
 
 import java.util.ArrayList;
 
@@ -118,6 +119,7 @@ void one() {
 
   grid.displayLayers(3, 3);
 }
+
 
 
 
