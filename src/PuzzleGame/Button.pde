@@ -1,6 +1,6 @@
 class Button {
   //Member Variables
-  PImage p1;
+  PImage p1,p2,p3;
   int x, y, w, h;
   //char image;
   boolean over;
@@ -16,36 +16,28 @@ class Button {
     this.val = val;
     //image = ' ';
     over = false;
-    //if (image == 'P') {
-    //  p1 = loadImage("https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/playbutton.png?raw=true");
-    //} else if (image == 'S') {
-    //  p1 = loadImage("https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/settingsicon.png?raw=true");
-    //} else if (image == 'B') {
-    //  p1 = loadImage("https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/backarrow.png?raw=true");
-    //}
+    if (val.equals("PLAY")) {
+      p1 = loadImage("playbutton.png");
+    } else if (val.equals("SETTINGS")) {
+      p2 = loadImage("settingsicon.png");
+    } else if (val.equals("BACK")) {
+      p3 = loadImage("backarrow.png");
+    }
   }
 
   //Member Methods
   void display() {
     imageMode(CENTER);
-    textAlign(CENTER,CENTER);
-    textMode(CENTER);
-    textSize(50);
-    fill(255);
-    rectMode(CENTER);
-    rect(x,y,w,h);
-    fill(0);
-    text(val,x,y);
-    //if (image == 'P') {
-    //  p1.resize(h, w);
-    //  image(p1, x, y);
-    //} else if (image == 'S') {
-    //  p1.resize(h, w);
-    //  image(p1, x, y);
-    //} else if (image == 'B') {
-    //  p1.resize(h, w);
-    //  image(p1, x, y);
-    //}
+    if (val.equals("PLAY")) {
+      p1.resize(w,h);
+      image(p1, x, y);
+    } else if (val.equals("SETTINGS")) {
+      p2.resize(w,h);
+      image(p2, x, y);
+    } else if (val.equals("PLAY")) {
+      p3.resize(w,h);
+      image(p3, x, y);
+    }
   }
   void hover(int tempX, int tempY) {
     if (x>tempX-w/2 && x<tempX+w/2 && y>tempY-h/2 && y<tempY+h/2) {
