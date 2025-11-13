@@ -13,12 +13,12 @@ void setup() {
   size(800, 900);
   screen = 'M';
 //Buttons
-  buttons[0] = new Button(400, 400, 400, 100, "PLAY");
-  buttons[1] = new Button(400, 550, 400, 100, "SETTINGS");
-  buttons[2] = new Button(100, 825, 150, 100, "BACK");
+  buttons[0] = new Button(400, 500, 400, 400, "PLAY");
+  buttons[1] = new Button(400, 825, 100, 100, "SETTINGS");
+  buttons[2] = new Button(100, 800, 150, 150, "BACK");
   
   tileSprites = new PImage[10];
-  tileSprites[0] = loadImage("Test.png"); // example
+  tileSprites[0] = loadImage("Test.jpeg"); // example
 
   int cols = 10;
   int rows = 10;
@@ -119,7 +119,3 @@ void one() {
 
   grid.displayLayers(3, 3);
 }
-
-
-
-
