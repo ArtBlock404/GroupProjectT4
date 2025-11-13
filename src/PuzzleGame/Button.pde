@@ -27,7 +27,6 @@ class Button {
 
   //Member Methods
   void display() {
-   
     if (val.equals("PLAY")) {
       p1.resize(w,h);
       image(p1, x, y);
