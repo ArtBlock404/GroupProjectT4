@@ -29,10 +29,10 @@ class Button {
   void display() {
     if (val.equals("PLAY")) {
       p1.resize(w,h);
-      image(p1, x, y);
+      image(p1, 200, 250);
     } else if (val.equals("SETTINGS")) {
       p2.resize(w,h);
-      image(p2, x, y);
+      image(p2, 300, 600);
     } else if (val.equals("BACK")) {
       p3.resize(w,h);
       image(p3, x, y);
