@@ -1,3 +1,5 @@
+//guys, press play to be able to see the grid, enemies, play, etc.
+
 import java.util.ArrayList;
 
 Grid grid;
@@ -116,4 +118,5 @@ void one() {
 
   grid.displayLayers(3, 3);
 }
+
 
