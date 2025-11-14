@@ -122,5 +122,42 @@ class Grid {
       }
     }
   }
-  
+
+
+ void addButton(int gx, int gy, int spriteIndex) {
+    PImage sprite = null;
+    if (spriteIndex >= 0 && spriteIndex < sprites.length) sprite = sprites[spriteIndex];
+
+    ButtonTile b = new ButtonTile();
+    b.gridX = gx;
+    b.gridY = gy;
+    b.tileSize = tileSize;
+    b.offsetY = offsetY;
+    b.sprite = sprite;
+
+    buttons.add(b);
+  }
+  void displayButtons() {
+    for (ButtonTile b : buttons) {
+      b.display();
+    }
+  }
+
+  void checkButtons() {
+    for (ButtonTile b : buttons) {
+      for (PushableTile pt : pushables) {
+        if (b.checkPushableTile(pt)) {
+          println("BUTTON triggered at " + b.gridX + "," + b.gridY);
+          onButtonTriggered(b);
+          return;
+        }
+      }
+    }
+  }
+  void onButtonTriggered(ButtonTile b) {
+  // You can replace this with whatever you want the button to do
+  println("Button triggered!");
+}
+}
+
 }
