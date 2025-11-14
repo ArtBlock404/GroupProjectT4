@@ -155,14 +155,49 @@ void setupOne() { // each level should have a corresponding setup+levelnumber
 }
 
 void setupTwo() {
-
+  
   grid.setTileSprite(1, 1, 0, 0);
   grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
   grid.setSolid(2, 1, true);
+  grid.setTileSprite(3,1,0 ,0);
+  grid.setSolid(3,1, true);
+  grid.addPushableTile(4,4,2,0);
 
   grid.addDoor(8, 8, 1);
+ 
+  player = new Player(grid, 5, 5, color(255, 200, 0));
+}
 
+void setupThree() {
+  grid.setTileSprite(1, 1, 0, 0);
+  grid.setSolid(1, 1, true);
+  grid.setTileSprite(2, 1, 0, 0);
+  grid.setSolid(2, 1, true);
+  grid.setTileSprite(3,1,0 ,0);
+  grid.setSolid(3,1, true);
+  grid.setTileSprite(3,2,0 ,0);
+  grid.setSolid(3,2, true);
+  grid.addPushableTile(4,4,2,0);
+
+  grid.addDoor(8, 8, 1);
+ 
+  player = new Player(grid, 5, 5, color(255, 200, 0));
+}
+
+void setupFour() {
+  grid.setTileSprite(1, 1, 0, 0);
+  grid.setSolid(1, 1, true);
+  grid.setTileSprite(2, 1, 0, 0);
+  grid.setSolid(2, 1, true);
+  grid.setTileSprite(3,1,0 ,0);
+  grid.setSolid(3,1, true);
+  grid.setTileSprite(3,2,0 ,0);
+  grid.setSolid(3,2, true);
+  grid.addPushableTile(4,4,2,0);
+
+  grid.addDoor(8, 8, 1);
+ 
   player = new Player(grid, 5, 5, color(255, 200, 0));
 }
 
@@ -170,3 +205,4 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
+
