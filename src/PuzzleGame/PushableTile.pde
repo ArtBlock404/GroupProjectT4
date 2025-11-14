@@ -1,3 +1,8 @@
+
+// this class records all of the tiles that the player can push.
+// it mainly goes into the grid class to be displayed, but this lets it move and snap like a player
+// while the player is pushing it.
+
 class PushableTile {
   int gridX, gridY;
   float x, y;
