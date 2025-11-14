@@ -24,6 +24,9 @@ class Button {
 
   //Member Methods
   void display() {
+    fill(255);
+    rectMode(CENTER);
+    rect(x,y,w,h);
     textAlign(CENTER, CENTER);
     textMode(CENTER);
     textSize(50);
@@ -31,6 +34,6 @@ class Button {
   }
   
   boolean clicked() {
-    return (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h);
+    return (mouseX > x -w/2 && mouseX < x+w/2 && mouseY > y - h/2 && mouseY < y+h/2);
   }
 }
