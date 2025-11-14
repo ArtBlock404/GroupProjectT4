@@ -5,7 +5,11 @@
 **Pitch:** A fantatiscal fairytale puzzle game where you solve mechanisms and avoid obstacles playing as our mystical protagonist: Arden.
 
 ![Class Diagram](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/classdiagram.png)
+
 ![UI Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup1.JPG)
+
+![UI Mockup2](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/Game.png)
+
 ![Timeline](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/timeline.png?raw=true)
 
 ## Core Classes
