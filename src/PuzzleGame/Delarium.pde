@@ -150,7 +150,9 @@ void advanceToNextLevel() {
 
 void setupOne() { // each level should have a corresponding setup+levelnumber
 
-  grid.setTileSprite(0, 1, 3, 0);
+// template for making a new level
+
+  grid.setTileSprite(0, 1, 3, 0); // x, y, layer, spriteIndex(PImage number)
   grid.setTileSprite(0, 2, 3, 0);
   grid.setSolid(0, 1, true);
   grid.setSolid(0, 2, true);
@@ -175,3 +177,4 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
  
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
+
