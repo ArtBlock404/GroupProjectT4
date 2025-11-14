@@ -2,7 +2,7 @@
 // TABLE OF CONTENTS
 // 21 - 40: setup
 // 44 - 56: draw
-  // 107 - 127: draw - one
+// 107 - 127: draw - one
 // 59 - 77: keypressed & mousepressed
 // 81 - 104: settings screen & start screen
 // 130 - 148: load & advance level
@@ -15,8 +15,10 @@ Grid grid;
 PImage[] tileSprites;
 Player player;
 Button[] buttons = new Button[3];
-char screen;
+char screen = 'M'; // M = main menu, S = settings, C = credits, P = play
 PImage p2;
+
+Button btnPlay, btnSettings, btnCredits, btnBack;
 
 int level = 1;
 int cols = 10;
@@ -26,38 +28,50 @@ int offsetY = 100;
 
 void setup() {
   size(800, 900);
-  screen = 'M';
   //Buttons
-  buttons[0] = new Button(400, 350, 400, 140, "PLAY");
-  buttons[1] = new Button(400, 550, 250, 100, "SETTINGS");
-  buttons[2] = new Button(50, 50, 100, 100, "BACK");
+
+  btnPlay = new Button(400, 400, 200, 100, "PLAY");
+  btnSettings = new Button (400, 600, 200, 100, "SETTINGS");
+  btnBack = new Button(100, 825, 100, 100, "BACK");
 
   p2 = loadImage("settings.png");
 
   tileSprites = new PImage[2];
   tileSprites[0] = loadImage("Test.png"); // example
-    tileSprites[1] = loadImage("Test2.PNG"); // example
+  tileSprites[1] = loadImage("Test2.PNG"); // example
 
 
   tileSize = 800 / cols;
   offsetY = 100;
 
   loadLevel(level);
-
 }
 
 void draw() {
-  for (int i = 0; i<buttons.length; i++) {
-    buttons[i].display();
-    buttons[i].hover(mouseX, mouseY);
-  }
-  if (screen == 'M') {
+  switch(screen) {
+  case 'M':
     startscreen();
-  } else if (screen == 'L') {
-    one();
-  } else if (screen == 'S') {
+    break;
+  case 'S':
     settingscreen();
+    break;
+    case 'P':
+    setupOne();
+    break;
+
   }
+
+  //for (int i = 0; i<buttons.length; i++) {
+  //  buttons[i].display();
+  //  buttons[i].hover(mouseX, mouseY);
+  //}
+  //if (screen == 'M') {
+  //  startscreen();
+  //} else if (screen == 'L') {
+  //  one();
+  //} else if (screen == 'S') {
+  //  settingscreen();
+  //}
 }
 
 void keyPressed() {
@@ -69,12 +83,18 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (buttons[0].over == true) {
-    screen = 'L';
-  } else if (buttons[1].over == true) {
-    screen = 'S';
-  } else if (buttons[2].over == true) {
-    screen = 'M';
+  switch(screen) {
+    case 'M':
+    if(btnPlay.clicked()) {
+      screen = 'P';
+      break;
+    } else if(btnSettings.clicked()) {
+      screen = 'S';
+      break;
+    } else if(btnBack.clicked()) {
+      screen = 'M';
+      break;
+    }
   }
   println("screen:" + screen);
 }
@@ -86,8 +106,7 @@ void settingscreen() {
   fill(255);
   image(p2, 150, 50);
   p2.resize(500, 150);
-  buttons[2].display();
-  buttons[2].hover(mouseX, mouseY);
+  btnBack.display();
 }
 
 void startscreen() {
@@ -98,32 +117,8 @@ void startscreen() {
   textMode(CENTER);
   textSize(70);
   text("DELARIUM", 400, 100);
-  buttons[0].display();
-  buttons[0].hover(mouseX, mouseY);
-  buttons[1].display();
-  buttons[1].hover(mouseX, mouseY);
-}
-
-void one() {
-  //where all of the game content will show up
-  background(0);
-  grid.displayLayers(0, 2);
-
-
-  grid.updatePushables();
-  grid.displayPushables();
-
-
-  player.update();
-  player.display();
-
-
-  grid.displayLayers(3, 4);
-  
-   grid.displayDoors();
-
-  grid.checkDoors(player);
-
+  btnPlay.display();
+  btnSettings.display();
 }
 
 void loadLevel(int lvl) {
@@ -150,9 +145,7 @@ void advanceToNextLevel() {
 
 void setupOne() { // each level should have a corresponding setup+levelnumber
 
-// template for making a new level
-
-  grid.setTileSprite(0, 1, 3, 0); // x, y, layer, spriteIndex(PImage number)
+  grid.setTileSprite(0, 1, 3, 0);
   grid.setTileSprite(0, 2, 3, 0);
   grid.setSolid(0, 1, true);
   grid.setSolid(0, 2, true);
@@ -162,19 +155,18 @@ void setupOne() { // each level should have a corresponding setup+levelnumber
 }
 
 void setupTwo() {
-  
+
   grid.setTileSprite(1, 1, 0, 0);
   grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
   grid.setSolid(2, 1, true);
 
   grid.addDoor(8, 8, 1);
- 
+
   player = new Player(grid, 5, 5, color(255, 200, 0));
 }
 
 void setupEmptyLevel() { // just in case there is no next level so the game doesnt crash
- 
+
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
-
