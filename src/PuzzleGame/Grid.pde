@@ -4,7 +4,7 @@
 //  funtions like this; "if (gx >= 0 && gx < cols && gy >= 0 && gy < rows)" make sure that no tiles are out of bounds, as them being so would crash the game.
 // nested loops like this:
 //for (int x = 0; x < cols; x++) {
-     // for (int y = 0; y < rows; y++) {
+// for (int y = 0; y < rows; y++) {
 // , check all tiles in a row and collumn so we dont need 50 more lines of code.
 
 class Grid {
@@ -106,25 +106,25 @@ class Grid {
     DoorTile d = new DoorTile(gx, gy, tileSize, offsetY, sprite);
     doors.add(d);
   }
-  
+
   void displayDoors() {
     for (DoorTile d : doors) {
       d.display();
     }
   }
-  
+
   void checkDoors(Player p) {
     for (DoorTile d : doors) {
       if (d.checkPlayer(p)) {
         println("Door triggered at " + d.gridX + "," + d.gridY + " -> advancing level");
         advanceToNextLevel();
-        return; 
+        return;
       }
     }
   }
 
 
- void addButton(int gx, int gy, int spriteIndex) {
+  void addButton(int gx, int gy, int spriteIndex) {
     PImage sprite = null;
     if (spriteIndex >= 0 && spriteIndex < sprites.length) sprite = sprites[spriteIndex];
 
@@ -135,29 +135,28 @@ class Grid {
     b.offsetY = offsetY;
     b.sprite = sprite;
 
-    buttons.add(b);
+    //buttons.add(b);
   }
   void displayButtons() {
-    for (ButtonTile b : buttons) {
-      b.display();
-    }
+    //for (ButtonTile b : buttons) {
+    //  b.display();
+    //}
   }
 
   void checkButtons() {
-    for (ButtonTile b : buttons) {
-      for (PushableTile pt : pushables) {
-        if (b.checkPushableTile(pt)) {
-          println("BUTTON triggered at " + b.gridX + "," + b.gridY);
-          onButtonTriggered(b);
-          return;
-        }
-      }
-    }
+    //for (ButtonTile b : buttons) {
+    //  for (PushableTile pt : pushables) {
+    //    if (b.checkPushableTile(pt)) {
+    //      println("BUTTON triggered at " + b.gridX + "," + b.gridY);
+    //      onButtonTriggered(b);
+    //      return;
+    //    }
+    //  }
+    //}
   }
   void onButtonTriggered(ButtonTile b) {
-  // You can replace this with whatever you want the button to do
-  println("Button triggered!");
-}
+    // You can replace this with whatever you want the button to do
+    println("Button triggered!");
+  }
 }
 
-}
