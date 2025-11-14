@@ -1,3 +1,10 @@
+
+// The player Class!
+// this is where all of the movment takes place, 
+// making sure that the player only moves one tile at a time,
+// in a straight line and clicking with the grid.
+// also smooths movement so it doesent snap to the grid imediately.
+
 class Player {
   int gridX, gridY;  // Current grid coordinates
   float x, y;        // Actual drawing position for smooth movement
