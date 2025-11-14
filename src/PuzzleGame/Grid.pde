@@ -1,3 +1,12 @@
+
+// The grd that stores all the tiles and funtions!
+//this calls all of the tiles to the screen so we dont have to add all that code in the main tab.
+//  funtions like this; "if (gx >= 0 && gx < cols && gy >= 0 && gy < rows)" make sure that no tiles are out of bounds, as them being so would crash the game.
+// nested loops like this:
+//for (int x = 0; x < cols; x++) {
+     // for (int y = 0; y < rows; y++) {
+// , check all tiles in a row and collumn so we dont need 50 more lines of code.
+
 class Grid {
   int cols, rows;
   int tileSize;
@@ -5,6 +14,7 @@ class Grid {
   Tile[][] tiles;
   PImage[] sprites;
   ArrayList<PushableTile> pushables;
+  ArrayList<DoorTile> doors;
 
   Grid(int cols, int rows, int tileSize, int offsetY, PImage[] sprites) {
     this.cols = cols;
@@ -13,6 +23,8 @@ class Grid {
     this.offsetY = offsetY;
     this.sprites = sprites;
     this.pushables = new ArrayList<PushableTile>();
+    this.doors = new ArrayList<DoorTile>();
+
 
     tiles = new Tile[cols][rows];
     for (int x = 0; x < cols; x++) {
@@ -86,4 +98,29 @@ class Grid {
       pt.display();
     }
   }
+
+  void addDoor(int gx, int gy, int spriteIndex) {
+
+    PImage sprite = null;
+    if (spriteIndex >= 0 && spriteIndex < sprites.length) sprite = sprites[spriteIndex];
+    DoorTile d = new DoorTile(gx, gy, tileSize, offsetY, sprite);
+    doors.add(d);
+  }
+  
+  void displayDoors() {
+    for (DoorTile d : doors) {
+      d.display();
+    }
+  }
+  
+  void checkDoors(Player p) {
+    for (DoorTile d : doors) {
+      if (d.checkPlayer(p)) {
+        println("Door triggered at " + d.gridX + "," + d.gridY + " -> advancing level");
+        advanceToNextLevel();
+        return; 
+      }
+    }
+  }
+  
 }
