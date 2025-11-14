@@ -1,3 +1,7 @@
+
+// the button class, mainly for the title and settings screen
+// makes pushable buttons in the main tab
+
 class Button {
   //Member Variables
   PImage p1,p2,p3;
