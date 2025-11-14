@@ -18,32 +18,19 @@ class Button {
     this.w = w;
     this.h = h;
     this.val = val;
-    //image = ' ';
     over = false;
-    if (val.equals("PLAY")) {
-      p1 = loadImage("play.png");
-    } else if (val.equals("SETTINGS")) {
-      p2 = loadImage("settings.png");
-    } else if (val.equals("BACK")) {
-      p3 = loadImage("back.png");
-    }
+    
   }
 
   //Member Methods
   void display() {
-    if (val.equals("PLAY")) {
-      image(p1, 200, 300);
-    } else if (val.equals("SETTINGS")) {
-      image(p2, 225, 525);
-    } else if (val.equals("BACK")) {
-      image(p3, 25, 25);
-    }
+    textAlign(CENTER, CENTER);
+    textMode(CENTER);
+    textSize(50);
+    text(val,x,y);
   }
-  void hover(int tempX, int tempY) {
-    if (x>tempX-w/2 && x<tempX+w/2 && y>tempY-h/2 && y<tempY+h/2) {
-      over = true;
-    } else {
-      over = false;
-    }
+  
+  boolean clicked() {
+    return (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h);
   }
 }
