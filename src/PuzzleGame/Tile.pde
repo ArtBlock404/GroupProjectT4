@@ -1,3 +1,7 @@
+
+// arguably the most important class, the tile class calls all the tiles to the grid.
+// it is the baseline for every object in the game
+
 class Tile {
   int gridX, gridY;
   int size;
