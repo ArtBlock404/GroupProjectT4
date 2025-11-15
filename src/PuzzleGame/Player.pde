@@ -1,33 +1,41 @@
 
-// The player Class!
-// this is where all of the movment takes place, 
-// making sure that the player only moves one tile at a time,
-// in a straight line and clicking with the grid.
-// also smooths movement so it doesent snap to the grid imediately.
+// this class records all of the tiles that the player can push.
+// it mainly goes into the grid class to be displayed, but this lets it move and snap like a player
+// while the player is pushing it.
 
-class Player {
-  int gridX, gridY;  // Current grid coordinates
-  float x, y;        // Actual drawing position for smooth movement
+class PushableTile {
+  int gridX, gridY;
+  float x, y;
   float targetX, targetY;
   int size;
-  color col;
-  Grid grid;
+  PImage sprite;
+  int layer;
   boolean isMoving = false;
+  float speed = 5;
+  int offsetY;
 
-  Player(Grid grid, int startGX, int startGY, color col) {
-    this.grid = grid;
-    this.gridX = startGX;
-    this.gridY = startGY;
-    this.size = grid.tileSize;
-    this.col = col;
-    this.x = gridX * size;
-    this.y = gridY * size + grid.offsetY;
+  PushableTile(int gx, int gy, int size, int offsetY, PImage sprite, int layer) {
+    this.gridX = gx;
+    this.gridY = gy;
+    this.size = size;
+    this.offsetY = offsetY;
+    this.sprite = sprite;
+    this.layer = layer;
+    this.x = gx * size;
+    this.y = gy * size + offsetY;
     this.targetX = x;
     this.targetY = y;
   }
 
+  void moveTo(int newGX, int newGY) {
+    gridX = newGX;
+    gridY = newGY;
+    targetX = newGX * size;
+    targetY = newGY * size + offsetY;
+    isMoving = true;
+  }a
+
   void update() {
-    // Smooth movement toward target tile
     if (isMoving) {
       x = lerp(x, targetX, 0.3);
       y = lerp(y, targetY, 0.3);
@@ -40,38 +48,6 @@ class Player {
   }
 
   void display() {
-    fill(col);
-    noStroke();
-    rect(x, y, size, size);
-  }
-
-  void move(int dx, int dy) {
-    if (isMoving) return;  // already moving
-
-    int newGX = gridX + dx;
-    int newGY = gridY + dy;
-
-    // Stay inside grid bounds
-    if (newGX < 0 || newGX >= grid.cols || newGY < 0 || newGY >= grid.rows) return;
-
-    // Check if a pushable tile exists
-    boolean pushed = false;
-    for (PushableTile pt : grid.pushables) {
-      if (pt.gridX == newGX && pt.gridY == newGY) {
-        pushed = grid.pushTile(newGX, newGY, dx, dy);
-        if (!pushed) return; // Can't move if push blocked
-        break;
-      }
-    }
-
-    // Check static collision (solids or unmovable pushables)
-    if (!pushed && grid.isSolid(newGX, newGY)) return;
-
-    // Move player
-    gridX = newGX;
-    gridY = newGY;
-    targetX = gridX * size;
-    targetY = gridY * size + grid.offsetY;
-    isMoving = true;
+    image(sprite, x, y, size, size);
   }
 }
