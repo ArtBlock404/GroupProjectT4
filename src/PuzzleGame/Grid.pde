@@ -1,5 +1,5 @@
 
-// The grd that stores all the tiles and funtions!
+// The grid that stores all the tiles and funtions!
 //this calls all of the tiles to the screen so we dont have to add all that code in the main tab.
 //  funtions like this; "if (gx >= 0 && gx < cols && gy >= 0 && gy < rows)" make sure that no tiles are out of bounds, as them being so would crash the game.
 // nested loops like this:
@@ -11,10 +11,13 @@ class Grid {
   int cols, rows;
   int tileSize;
   int offsetY;
+  int DOOR_LAYER = 2;
   Tile[][] tiles;
   PImage[] sprites;
   ArrayList<PushableTile> pushables;
   ArrayList<DoorTile> doors;
+  ArrayList<ButtonTile> buttons;
+
 
   Grid(int cols, int rows, int tileSize, int offsetY, PImage[] sprites) {
     this.cols = cols;
@@ -24,7 +27,7 @@ class Grid {
     this.sprites = sprites;
     this.pushables = new ArrayList<PushableTile>();
     this.doors = new ArrayList<DoorTile>();
-
+    this.buttons = new ArrayList<ButtonTile>();
 
     tiles = new Tile[cols][rows];
     for (int x = 0; x < cols; x++) {
@@ -123,40 +126,80 @@ class Grid {
     }
   }
 
+  void addButton(int bx, int by, int spriteIndex,
+    int targetX, int targetY,
+    int newSpriteIndex, boolean newSolid) {
 
-  void addButton(int gx, int gy, int spriteIndex) {
     PImage sprite = null;
-    if (spriteIndex >= 0 && spriteIndex < sprites.length) sprite = sprites[spriteIndex];
+    if (spriteIndex >= 0 && spriteIndex < sprites.length) {
+      sprite = sprites[spriteIndex];
+    }
 
     ButtonTile b = new ButtonTile();
-    b.gridX = gx;
-    b.gridY = gy;
+    b.gridX = bx;
+    b.gridY = by;
     b.tileSize = tileSize;
     b.offsetY = offsetY;
     b.sprite = sprite;
 
-    //buttons.add(b);
+    b.targetX = targetX;
+    b.targetY = targetY;
+    b.newSpriteIndex = newSpriteIndex;
+    b.newSolid = newSolid;
+
+    buttons.add(b);
   }
+
   void displayButtons() {
-    //for (ButtonTile b : buttons) {
-    //  b.display();
-    //}
+    for (ButtonTile b : buttons) {
+      b.display();
+    }
   }
 
   void checkButtons() {
-    //for (ButtonTile b : buttons) {
-    //  for (PushableTile pt : pushables) {
-    //    if (b.checkPushableTile(pt)) {
-    //      println("BUTTON triggered at " + b.gridX + "," + b.gridY);
-    //      onButtonTriggered(b);
-    //      return;
-    //    }
-    //  }
-    //}
+    for (ButtonTile b : buttons) {
+      boolean somethingOnButton = false;
+
+      for (PushableTile pt : pushables) {
+        if (b.isOnButton(pt)) {
+          somethingOnButton = true;
+
+          if (!b.triggered) {
+            // First time pressed
+            onButtonTriggered(b);
+          }
+          break;
+        }
+      }
+      if (!somethingOnButton && b.triggered) {
+        onButtonReleased(b);
+      }
+    }
   }
   void onButtonTriggered(ButtonTile b) {
-    // You can replace this with whatever you want the button to do
     println("Button triggered!");
+
+    // store old state
+    b.oldSolid = isSolid(b.targetX, b.targetY);
+    b.oldSpriteIndex = tiles[b.targetX][b.targetY].getSpriteIndex(DOOR_LAYER);
+
+    // change to new state
+setTileSprite(b.targetX, b.targetY, DOOR_LAYER, b.newSpriteIndex);
+setTileSprite(b.targetX, b.targetY, DOOR_LAYER, b.oldSpriteIndex);
+
+    setSolid(b.targetX, b.targetY, b.newSolid);
+
+    b.triggered = true;
+  }
+  void onButtonReleased(ButtonTile b) {
+    println("Button released!");
+
+    // restore original tile
+    if (b.oldSpriteIndex != -1) {
+      setTileSprite(b.targetX, b.targetY, 3, b.oldSpriteIndex);
+    }
+    setSolid(b.targetX, b.targetY, b.oldSolid);
+
+    b.triggered = false;
   }
 }
-
