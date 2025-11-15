@@ -46,4 +46,11 @@ class Tile {
       spriteIndices[layer] = index;
     }
   }
+
+  int getSpriteIndex(int layer) {
+    if (layer >= 0 && layer < spriteIndices.length) {
+      return spriteIndices[layer];
+    }
+    return -1;
+  }
 }
