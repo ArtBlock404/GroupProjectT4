@@ -16,7 +16,7 @@ PImage[] tileSprites;
 Player player;
 Button[] buttons = new Button[3];
 char screen = 'M'; // M = main menu, S = settings, C = credits, P = play
-PImage p2;
+PImage[] buttonSprites;
 
 Button btnPlay, btnSettings, btnCredits, btnBack;
 
@@ -26,19 +26,28 @@ int rows = 10;
 int tileSize = 800 / cols;
 int offsetY = 100;
 
+PFont PixelFont;
+
 void setup() {
   size(800, 900);
-  //Buttons
 
-  btnPlay = new Button(400, 400, 200, 100, "PLAY");
-  btnSettings = new Button (400, 600, 200, 100, "SETTINGS");
-  btnBack = new Button(100, 825, 100, 100, "BACK");
+PixelFont = createFont("PixelFont.ttf", 32); 
+  textFont(PixelFont);
 
-  p2 = loadImage("settings.png");
+  buttonSprites = new PImage[4];
+  buttonSprites[0] = loadImage("play.png");
+  buttonSprites[1] = loadImage("settings.png");
+  buttonSprites[2] = loadImage("back.png");
+  buttonSprites[3] = loadImage("none.png");
+
 
   tileSprites = new PImage[2];
   tileSprites[0] = loadImage("Test.png"); // example
   tileSprites[1] = loadImage("Test2.PNG"); // example
+
+  btnPlay = new Button(400, 400, 350, 150, "Play", 150, 3);
+  btnSettings = new Button (400, 600, 200, 80,"Settings",50, 3);
+  btnBack = new Button(100, 825, 100, 100,"Back",50, 3);
 
 
   tileSize = 800 / cols;
@@ -55,23 +64,10 @@ void draw() {
   case 'S':
     settingscreen();
     break;
-    case 'P':
-    setupOne();
+  case 'P':
+    levelDraw();
     break;
-
   }
-
-  //for (int i = 0; i<buttons.length; i++) {
-  //  buttons[i].display();
-  //  buttons[i].hover(mouseX, mouseY);
-  //}
-  //if (screen == 'M') {
-  //  startscreen();
-  //} else if (screen == 'L') {
-  //  one();
-  //} else if (screen == 'S') {
-  //  settingscreen();
-  //}
 }
 
 void keyPressed() {
@@ -84,14 +80,14 @@ void keyPressed() {
 
 void mousePressed() {
   switch(screen) {
-    case 'M':
-    if(btnPlay.clicked()) {
+  case 'M':
+    if (btnPlay.clicked()) {
       screen = 'P';
       break;
-    } else if(btnSettings.clicked()) {
+    } else if (btnSettings.clicked()) {
       screen = 'S';
       break;
-    } else if(btnBack.clicked()) {
+    } else if (btnBack.clicked()) {
       screen = 'M';
       break;
     }
@@ -104,8 +100,6 @@ void settingscreen() {
   //The settings screen
   background(0);
   fill(255);
-  image(p2, 150, 50);
-  p2.resize(500, 150);
   btnBack.display();
 }
 
@@ -119,6 +113,26 @@ void startscreen() {
   text("DELARIUM", 400, 100);
   btnPlay.display();
   btnSettings.display();
+}
+
+void levelDraw() {
+  background(0);
+  grid.displayLayers(0, 2);
+
+
+  grid.updatePushables();
+  grid.displayPushables();
+
+
+  player.update();
+  player.display();
+
+
+  grid.displayLayers(3, 4);
+
+  grid.displayDoors();
+
+  grid.checkDoors(player);
 }
 
 void loadLevel(int lvl) {
@@ -155,17 +169,17 @@ void setupOne() { // each level should have a corresponding setup+levelnumber
 }
 
 void setupTwo() {
-  
+
   grid.setTileSprite(1, 1, 0, 0);
   grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
   grid.setSolid(2, 1, true);
-  grid.setTileSprite(3,1,0 ,0);
-  grid.setSolid(3,1, true);
-  grid.addPushableTile(4,4,2,0);
+  grid.setTileSprite(3, 1, 0, 0);
+  grid.setSolid(3, 1, true);
+  grid.addPushableTile(4, 4, 2, 0);
 
   grid.addDoor(8, 8, 1);
- 
+
   player = new Player(grid, 5, 5, color(255, 200, 0));
 }
 
@@ -174,14 +188,14 @@ void setupThree() {
   grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
   grid.setSolid(2, 1, true);
-  grid.setTileSprite(3,1,0 ,0);
-  grid.setSolid(3,1, true);
-  grid.setTileSprite(3,2,0 ,0);
-  grid.setSolid(3,2, true);
-  grid.addPushableTile(4,4,2,0);
+  grid.setTileSprite(3, 1, 0, 0);
+  grid.setSolid(3, 1, true);
+  grid.setTileSprite(3, 2, 0, 0);
+  grid.setSolid(3, 2, true);
+  grid.addPushableTile(4, 4, 2, 0);
 
   grid.addDoor(8, 8, 1);
- 
+
   player = new Player(grid, 5, 5, color(255, 200, 0));
 }
 
@@ -190,14 +204,14 @@ void setupFour() {
   grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
   grid.setSolid(2, 1, true);
-  grid.setTileSprite(3,1,0 ,0);
-  grid.setSolid(3,1, true);
-  grid.setTileSprite(3,2,0 ,0);
-  grid.setSolid(3,2, true);
-  grid.addPushableTile(4,4,2,0);
+  grid.setTileSprite(3, 1, 0, 0);
+  grid.setSolid(3, 1, true);
+  grid.setTileSprite(3, 2, 0, 0);
+  grid.setSolid(3, 2, true);
+  grid.addPushableTile(4, 4, 2, 0);
 
   grid.addDoor(8, 8, 1);
- 
+
   player = new Player(grid, 5, 5, color(255, 200, 0));
 }
 
