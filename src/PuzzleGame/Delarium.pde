@@ -31,7 +31,7 @@ PFont PixelFont;
 void setup() {
   size(800, 900);
 
-PixelFont = createFont("PixelFont.ttf", 32); 
+  PixelFont = createFont("PixelFont.ttf", 32);
   textFont(PixelFont);
 
   buttonSprites = new PImage[4];
@@ -46,8 +46,8 @@ PixelFont = createFont("PixelFont.ttf", 32);
   tileSprites[1] = loadImage("Test2.PNG"); // example
 
   btnPlay = new Button(400, 400, 350, 150, "Play", 150, 3);
-  btnSettings = new Button (400, 600, 200, 80,"Settings",50, 3);
-  btnBack = new Button(100, 825, 100, 100,"Back",50, 3);
+  btnSettings = new Button (400, 600, 200, 80, "Settings", 50, 3);
+  btnBack = new Button(100, 825, 100, 100, "Back", 50, 3);
 
 
   tileSize = 800 / cols;
@@ -119,18 +119,17 @@ void levelDraw() {
   background(0);
   grid.displayLayers(0, 2);
 
+  grid.displayButtons();
+  grid.displayDoors();
 
   grid.updatePushables();
   grid.displayPushables();
-
+  grid.checkButtons();
 
   player.update();
   player.display();
-
-
+  
   grid.displayLayers(3, 4);
-
-  grid.displayDoors();
 
   grid.checkDoors(player);
 }
@@ -163,8 +162,15 @@ void setupOne() { // each level should have a corresponding setup+levelnumber
   grid.setTileSprite(0, 2, 3, 0);
   grid.setSolid(0, 1, true);
   grid.setSolid(0, 2, true);
+  grid.setSolid(2, 2, true);
+
   grid.addPushableTile(4, 4, 2, 0);
   grid.addDoor(2, 2, 1);
+  //ADDING BUTTONS: (x, y (button location), PImage #,
+  // x, y (tile targeted), PImage for targeted sprite, solid true or false)
+  // total of 6 ints and 1 boolean
+  grid.addButton(7, 4, 2, 2, 2, 1, false);
+
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
 
@@ -219,4 +225,3 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
-
