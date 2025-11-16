@@ -45,9 +45,9 @@ void setup() {
   tileSprites[0] = loadImage("Test.png"); // example
   tileSprites[1] = loadImage("Test2.PNG"); // example
 
-  btnPlay = new Button(400, 400, 350, 150, "Play", 150, 3);
-  btnSettings = new Button (400, 600, 200, 80, "Settings", 50, 3);
-  btnBack = new Button(100, 825, 100, 100, "Back", 50, 3);
+  btnPlay = new Button(200, 350, 400, 150, 400, 421, "Play", 150, 0);
+  btnSettings = new Button (225, 550, 300, 100, 400, 600, "Settings", 50, 1);
+  btnBack = new Button(50, 50, 100, 80, 100, 80, "Back", 50, 2);
 
 
   tileSize = 800 / cols;
@@ -87,10 +87,12 @@ void mousePressed() {
     } else if (btnSettings.clicked()) {
       screen = 'S';
       break;
-    } else if (btnBack.clicked()) {
-      screen = 'M';
-      break;
-    }
+    } 
+   case 'S':
+     if(btnBack.clicked()) {
+       screen = 'M';
+       break;
+     }
   }
   println("screen:" + screen);
 }
