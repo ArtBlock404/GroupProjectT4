@@ -36,7 +36,7 @@
 
 ---
 
-## *Group*
+## *Team Members*
 - Jonah White (@ArtBlock404)
 - Angie Liu (@angieliu4)
 - Maizie Robson(@EMaizieR)
