@@ -6,13 +6,16 @@
 
 ![Logo]()
 
--------------------------------------------------------------------------------------------------------------
+---
+## UML
+
 ![Class Diagram](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/classdiagram.png)
 
+---
+
+## EARLY CONCEPTS
+
 ![UI Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup1.JPG)
-
-## EARLY CONCEPT
-
 
 ![UI Mockup2](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/Game.png)
 
