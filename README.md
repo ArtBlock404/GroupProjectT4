@@ -47,4 +47,5 @@
 - [ ] Plan levels
 - [ ] Story & text
 - [ ] Hazards
-- [ ] Finish sprites & animation 
+- [ ] Finish sprites & animation
+- [ ] Add sounds and music
