@@ -1,4 +1,4 @@
-# **DELARIUM** 🍄🌲🌷
+# *DELARIUM* 🍄🌲🌷
 
 **Classification:** Simple Game.
 
@@ -7,13 +7,13 @@
 ![Logo]()
 
 ---
-## **UML**
+## *UML*
 
 ![Class Diagram](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/classdiagram.png)
 
 ---
 
-## EARLY CONCEPTS
+## *EARLY CONCEPTS*
 
 ![UI Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup1.JPG)
 
@@ -21,7 +21,7 @@
 
 ---
 
-## Core Classes
+## *Core Classes*
 | Class | Role |
 |-------|------|
 | `Player` | The Player |
@@ -36,14 +36,14 @@
 
 ---
 
-## Group
+## *Group*
 - Jonah White (@ArtBlock404)
 - Angie Liu (@angieliu4)
 - Maizie Robson(@EMaizieR)
 
 ---
 
-## To-Do
+## *To-Do*
 - [ ] Plan levels
 - [ ] Story & text
 - [ ] Hazards
