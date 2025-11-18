@@ -1,4 +1,4 @@
-# GroupProjectT4
+# DELARIUM
 
 **Classification:** Simple Game.
 
