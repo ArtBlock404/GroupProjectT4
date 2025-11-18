@@ -1,4 +1,4 @@
-<img width="1251" height="1233" alt="image" src="https://github.com/user-attachments/assets/67eb6b00-9090-4290-b5d3-1471a86db089" /># *DELARIUM* 🍄🌲🌷
+# *DELARIUM* 🍄🌲🌷
 
 **Classification:** Simple Game.
 
