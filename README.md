@@ -1,13 +1,13 @@
-# DELARIUM 🍄🌲🌷
+# **DELARIUM** 🍄🌲🌷
 
 **Classification:** Simple Game.
 
-**Pitch:** A fantatiscal fairytale puzzle game where you solve mechanisms and avoid obstacles playing as our mystical protagonist: ==Arden==.
+**Pitch:** A fantatastical fairytale puzzle game where you solve mechanisms and avoid obstacles playing as our mystical protagonist: **Arden** .
 
 ![Logo]()
 
 ---
-## UML
+## **UML**
 
 ![Class Diagram](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/classdiagram.png)
 
