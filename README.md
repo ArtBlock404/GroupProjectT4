@@ -4,6 +4,8 @@
 
 **Pitch:** A fantatiscal fairytale puzzle game where you solve mechanisms and avoid obstacles playing as our mystical protagonist: Arden.
 
+![Logo](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/play.png)
+
 ![Class Diagram](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/classdiagram.png)
 
 ![UI Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup1.JPG)
@@ -21,9 +23,9 @@
 | `PushableTile` | moves when pushed |
 | `DoorTile` | Ends and changes the level |
 | `HazardTile` | Hazard |
-| `Button` | buttons for the title screen/settings |
+| `Button` | Buttons for the title screen/settings |
+| `ButtonTile` | Buttons pushed by Pushable Tiles |
 | `Grid` | Displays tile layout |
-| `displaytext` | Tutorials, tips, dialogue |
 
 ## Group
 - Jonah White (@ArtBlock404)
