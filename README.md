@@ -19,6 +19,8 @@
 
 ![UI Mockup2](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/Game.png)
 
+---
+
 ## Core Classes
 | Class | Role |
 |-------|------|
@@ -32,10 +34,14 @@
 | `ButtonTile` | Buttons pushed by Pushable Tiles |
 | `Grid` | Displays tile layout |
 
+---
+
 ## Group
 - Jonah White (@ArtBlock404)
 - Angie Liu (@angieliu4)
 - Maizie Robson(@EMaizieR)
+
+---
 
 ## To-Do
 - Plan levels
