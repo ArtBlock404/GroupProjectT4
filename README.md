@@ -44,7 +44,7 @@
 ---
 
 ## To-Do
-- Plan levels
-- Story & text
-- Hazards
-- Finish sprites & animation 
+- [] Plan levels
+- [] Story & text
+- [] Hazards
+- [] Finish sprites & animation 
