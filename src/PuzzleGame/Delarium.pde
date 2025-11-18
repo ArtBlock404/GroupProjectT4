@@ -14,7 +14,7 @@ import java.util.ArrayList;
 Grid grid;
 PImage[] tileSprites;
 Player player;
-Button[] buttons = new Button[3];
+Button[] buttons = new Button[4];
 char screen = 'M'; // M = main menu, S = settings, C = credits, P = play
 PImage[] buttonSprites;
 
@@ -34,11 +34,12 @@ void setup() {
   PixelFont = createFont("PixelFont.ttf", 32);
   textFont(PixelFont);
 
-  buttonSprites = new PImage[4];
+  buttonSprites = new PImage[5];
   buttonSprites[0] = loadImage("play.png");
   buttonSprites[1] = loadImage("settings.png");
   buttonSprites[2] = loadImage("back.png");
-  buttonSprites[3] = loadImage("none.png");
+  buttonSprites[3] = loadImage("credits.png");
+  buttonSprites[4] = loadImage("none.png");
 
 
   tileSprites = new PImage[2];
@@ -46,8 +47,9 @@ void setup() {
   tileSprites[1] = loadImage("Test2.PNG"); // example
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, "Play", 150, 0);
-  btnSettings = new Button (225, 550, 300, 100, 400, 600, "Settings", 50, 1);
+  btnSettings = new Button (265, 550, 250, 50, 390, 570, "Settings", 50, 1);
   btnBack = new Button(50, 50, 100, 80, 100, 80, "Back", 50, 2);
+  btnCredits = new Button (280, 650, 200, 50, 385, 680, "Credits", 50, 3);
 
 
   tileSize = 800 / cols;
@@ -66,6 +68,9 @@ void draw() {
     break;
   case 'P':
     levelDraw();
+    break;
+  case 'C':
+    creditscreen();
     break;
   }
 }
@@ -87,9 +92,17 @@ void mousePressed() {
     } else if (btnSettings.clicked()) {
       screen = 'S';
       break;
-    } 
+    } else if (btnCredits.clicked()) {
+      screen = 'C';
+      break;
+    }
    case 'S':
      if(btnBack.clicked()) {
+       screen = 'M';
+       break;
+     }
+   case 'C':
+     if (btnBack.clicked()) {
        screen = 'M';
        break;
      }
@@ -113,8 +126,20 @@ void startscreen() {
   textMode(CENTER);
   textSize(70);
   text("DELARIUM", 400, 100);
+  rect(150,50,500,185);
   btnPlay.display();
   btnSettings.display();
+  btnCredits.display();
+}
+
+void creditscreen() {
+  //Credits
+  background (0);
+  fill(255);
+  textAlign(CENTER,CENTER);
+  textMode(CENTER);
+  textSize(70);
+  btnBack.display();
 }
 
 void levelDraw() {
