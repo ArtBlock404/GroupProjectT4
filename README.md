@@ -25,9 +25,9 @@
 | Class | Role |
 |-------|------|
 | `Player` | The Player |
-| `Tile` | Tiles that amke up the game maps and elements |
+| `Tile` | Tiles that make up the game maps and elements |
 | `TileType` | Determines tile properties|
-| `PushableTile` | moves when pushed |
+| `PushableTile` | Moves when pushed |
 | `DoorTile` | Ends and changes the level |
 | `HazardTile` | Hazard |
 | `Button` | Buttons for the title screen/settings |
