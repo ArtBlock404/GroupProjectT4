@@ -1,4 +1,4 @@
-# *DELARIUM* 🍄🌲🌷
+<img width="1251" height="1233" alt="image" src="https://github.com/user-attachments/assets/67eb6b00-9090-4290-b5d3-1471a86db089" /># *DELARIUM* 🍄🌲🌷
 
 **Classification:** Simple Game.
 
@@ -15,9 +15,13 @@
 
 ## *EARLY CONCEPTS*
 
-![UI Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup1.JPG)
+![UI Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup1.JPG?raw=true)
 
-![UI Mockup2](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/Game.png)
+![UI Mockup2](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/Game.png?raw=true)
+
+### Protagonist Arden
+
+![Arden Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup2.JPG?raw=true)
 
 ---
 
