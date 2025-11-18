@@ -1,4 +1,4 @@
-# DELARIUM
+# DELARIUM 🍄🌲🌷
 
 **Classification:** Simple Game.
 
