@@ -21,7 +21,7 @@
 
 ---
 
-## *Core Classes*
+## *CORE CLASSES*
 | Class | Role |
 |-------|------|
 | `Player` | The Player |
@@ -36,14 +36,14 @@
 
 ---
 
-## *Team Members*
+## *TEAM MEMBERS*
 - Jonah White (@ArtBlock404)
 - Angie Liu (@angieliu4)
 - Maizie Robson(@EMaizieR)
 
 ---
 
-## *To-Do*
+## *TO-DO*
 - [ ] Plan levels
 - [ ] Story & text
 - [ ] Hazards
