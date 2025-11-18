@@ -9,7 +9,7 @@
 ---
 ## *UML*
 
-![Class Diagram](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/classdiagram.png)
+![Class Diagram](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/classdiagram.png?raw=true)
 
 ---
 
