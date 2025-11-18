@@ -11,7 +11,8 @@
 
 ![UI Mockup](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/mockup1.JPG)
 
-**EARLY CONCEPT**
+## EARLY CONCEPT
+
 
 ![UI Mockup2](https://github.com/ArtBlock404/GroupProjectT4/blob/main/images/Game.png)
 
