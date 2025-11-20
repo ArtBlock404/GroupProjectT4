@@ -11,7 +11,7 @@
 
 import java.util.ArrayList;
 
-Animation animation1;
+//Animation animation1;
 
 float xpos;
 float ypos;
@@ -37,9 +37,9 @@ PFont PixelFont;
 
 void setup() {
   size(800, 900);
-  animation1 = new Animation("PT_Shifty_", 38);
+  //animation1 = new Animation("PT_Shifty_", 38);
   
-  ypos = height * 0.25;
+  //ypos = height * 0.25;
 
   PixelFont = createFont("PixelFont.ttf", 32);
   textFont(PixelFont);
@@ -54,6 +54,7 @@ void setup() {
   // Images for titles/background
   titlesettings = loadImage("titlesettings.png");
   titlecredits = loadImage("titlecredits.png");
+  background = loadImage("background.png");
 
   tileSprites = new PImage[2];
   tileSprites[0] = loadImage("Test.png"); // example
@@ -127,6 +128,7 @@ void mousePressed() {
 void settingscreen() {
   //The settings screen
   background(0);
+  image(background, 0, 0);
   fill(255);
   btnBack.display();
   btnBack.hover();
@@ -136,9 +138,10 @@ void settingscreen() {
 void startscreen() {
   //Main menu
   background(0);
-  float dx = mouseX - xpos;
-  animation1.display(xpos-animation1.getWidth()/2, ypos);
-  xpos = xpos + dx/drag;
+  image(background, 0, 0);
+  //float dx = mouseX - xpos;
+  //animation1.display(xpos-animation1.getWidth()/2, ypos);
+  //xpos = xpos + dx/drag;
   fill(255);
   textAlign(CENTER, CENTER);
   textMode(CENTER);
@@ -156,11 +159,13 @@ void startscreen() {
 void creditscreen() {
   //Credits
   background (0);
+  image(background, 0, 0);
   fill(255);
   textAlign(CENTER,CENTER);
   textMode(CENTER);
   textSize(70);
   btnBack.display();
+  btnBack.hover();
   image(titlecredits, 200, 50);
 }
 
