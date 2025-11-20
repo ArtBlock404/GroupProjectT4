@@ -11,6 +11,12 @@
 
 import java.util.ArrayList;
 
+Animation animation1;
+
+float xpos;
+float ypos;
+float drag = 30.0;
+
 Grid grid;
 PImage[] tileSprites;
 Player player;
@@ -31,6 +37,9 @@ PFont PixelFont;
 
 void setup() {
   size(800, 900);
+  animation1 = new Animation("PT_Shifty_", 38);
+  
+  ypos = height * 0.25;
 
   PixelFont = createFont("PixelFont.ttf", 32);
   textFont(PixelFont);
@@ -52,7 +61,7 @@ void setup() {
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, "Play", 150, 0);
   btnSettings = new Button (265, 550, 250, 50, 390, 570, "Settings", 50, 1);
-  btnBack = new Button(20, 30, 100, 80, 100, 80, "Back", 50, 2);
+  btnBack = new Button(20, 30, 80, 80, 60, 60, "Back", 50, 2);
   btnCredits = new Button (280, 650, 200, 50, 385, 680, "Credits", 50, 3);
 
 
@@ -120,12 +129,16 @@ void settingscreen() {
   background(0);
   fill(255);
   btnBack.display();
+  btnBack.hover();
   image(titlesettings, 175, 50);
 }
 
 void startscreen() {
   //Main menu
   background(0);
+  float dx = mouseX - xpos;
+  animation1.display(xpos-animation1.getWidth()/2, ypos);
+  xpos = xpos + dx/drag;
   fill(255);
   textAlign(CENTER, CENTER);
   textMode(CENTER);
@@ -135,6 +148,9 @@ void startscreen() {
   btnPlay.display();
   btnSettings.display();
   btnCredits.display();
+  btnSettings.hover();
+  btnCredits.hover();
+  btnPlay.hover();
 }
 
 void creditscreen() {
