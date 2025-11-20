@@ -21,7 +21,13 @@ class Button {
 
   void display() {
     if (sprite != null) {
+      if (over) {
       image(sprite, x, y);
+      text("X",r + w/2 + 30, i + 5);
+    } else {
+      image(sprite, x, y);
+    }
+      
     } else {
       fill(255);
       rect(x, y, w, h);
@@ -30,5 +36,12 @@ class Button {
   
   boolean clicked() {
     return (mouseX > r - w/2 && mouseX < r + w/2 && mouseY > i - h/2 && mouseY < i + h/2);
+  }
+  void hover() {
+    if(mouseX > r - w/2 && mouseX < r + w/2 && mouseY > i - h/2 && mouseY < i + h/2) {
+      over = true;
+    } else {
+      over = false;
+    }
   }
 }
