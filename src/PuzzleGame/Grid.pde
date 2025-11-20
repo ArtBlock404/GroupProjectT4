@@ -203,29 +203,29 @@ setTileSprite(b.targetX, b.targetY, DOOR_LAYER, b.oldSpriteIndex);
     b.triggered = false;
   }
 
-void addHazard(int gx, int gy, int spriteIndex) {
+//void addHazard(int gx, int gy, int spriteIndex) {
 
-    PImage sprite = null;
-    if (spriteIndex >= 0 && spriteIndex < sprites.length) sprite = sprites[spriteIndex];
-    HazardTile d = new HazardTile(gx, gy, tileSize, offsetY, sprite);
-    hazards.add(d);
-  }
+//    PImage sprite = null;
+//    if (spriteIndex >= 0 && spriteIndex < sprites.length) sprite = sprites[spriteIndex];
+//    HazardTile d = new HazardTile(gx, gy, tileSize, offsetY, sprite);
+//    hazards.add(d);
+//  }
   
-  void displayHazards() {
-    for (HazardTile d : hazards) {
-      d.display();
-    }
-  }
+//  void displayHazards() {
+//    for (HazardTile d : hazards) {
+//      d.display();
+//    }
+//  }
   
-  void checkHazards(Player p) {
-    for (HazardTile h : hazards) {
-      if (h.checkPlayer(p)) {
-        println("Hazard triggered at " + h.gridX + "," + h.gridY + " -> You Have Died");
-        //deathScreen();
-        return;
-      }
-    }
-  }
+//  void checkHazards(Player p) {
+//    for (HazardTile h : hazards) {
+//      if (h.checkPlayer(p)) {
+//        println("Hazard triggered at " + h.gridX + "," + h.gridY + " -> You Have Died");
+//        //deathScreen();
+//        return;
+//      }
+//    }
+//  }
 
 
 }
