@@ -17,6 +17,7 @@ Player player;
 Button[] buttons = new Button[4];
 char screen = 'M'; // M = main menu, S = settings, C = credits, P = play
 PImage[] buttonSprites;
+PImage titlesettings, titlecredits, titlelogo, background;
 
 Button btnPlay, btnSettings, btnCredits, btnBack;
 
@@ -40,7 +41,10 @@ void setup() {
   buttonSprites[2] = loadImage("back.png");
   buttonSprites[3] = loadImage("credits.png");
   buttonSprites[4] = loadImage("none.png");
-
+  
+  // Images for titles/background
+  titlesettings = loadImage("titlesettings.png");
+  titlecredits = loadImage("titlecredits.png");
 
   tileSprites = new PImage[2];
   tileSprites[0] = loadImage("Test.png"); // example
@@ -48,7 +52,7 @@ void setup() {
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, "Play", 150, 0);
   btnSettings = new Button (265, 550, 250, 50, 390, 570, "Settings", 50, 1);
-  btnBack = new Button(50, 50, 100, 80, 100, 80, "Back", 50, 2);
+  btnBack = new Button(20, 30, 100, 80, 100, 80, "Back", 50, 2);
   btnCredits = new Button (280, 650, 200, 50, 385, 680, "Credits", 50, 3);
 
 
@@ -116,6 +120,7 @@ void settingscreen() {
   background(0);
   fill(255);
   btnBack.display();
+  image(titlesettings, 175, 50);
 }
 
 void startscreen() {
@@ -140,6 +145,7 @@ void creditscreen() {
   textMode(CENTER);
   textSize(70);
   btnBack.display();
+  image(titlecredits, 200, 50);
 }
 
 void levelDraw() {
