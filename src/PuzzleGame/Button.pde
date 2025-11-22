@@ -1,7 +1,7 @@
 //r and i state where the hitbox of the buttons is, h and w state how big the hitbox is
 
 class Button {
-  PImage sprite;        
+  PImage sprite, arrow;        
   int x, y, w, h, r, i, size;
   boolean over;
   String val;
@@ -17,13 +17,15 @@ class Button {
     over = false;
 
     sprite = buttonSprites[spriteIndex];
+    
+    arrow = loadImage("arrow.png");
   }
 
   void display() {
     if (sprite != null) {
       if (over) {
       image(sprite, x, y);
-      text("X",r + w/2 + 30, i + 5);
+      image(arrow, r + w/2 + 10, i - 25);
     } else {
       image(sprite, x, y);
     }
