@@ -21,11 +21,11 @@ Grid grid;
 PImage[] tileSprites;
 Player player;
 Button[] buttons = new Button[4];
-char screen = 'M'; // M = main menu, S = settings, C = credits, P = play
+char screen = 'M'; // M = main menu, S = settings, C = credits, P = play, R = pause
 PImage[] buttonSprites;
 PImage titlesettings, titlecredits, titlelogo, background;
 
-Button btnPlay, btnSettings, btnCredits, btnBack;
+Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnReset, btnMenu;
 
 int level = 1;
 int cols = 10;
@@ -44,12 +44,14 @@ void setup() {
   PixelFont = createFont("PixelFont.ttf", 32);
   textFont(PixelFont);
 
-  buttonSprites = new PImage[5];
+  buttonSprites = new PImage[7];
   buttonSprites[0] = loadImage("play.png");
   buttonSprites[1] = loadImage("settings.png");
   buttonSprites[2] = loadImage("back.png");
   buttonSprites[3] = loadImage("credits.png");
-  buttonSprites[4] = loadImage("none.png");
+  buttonSprites[4] = loadImage("credits.png");
+  buttonSprites[5] = loadImage("credits.png");
+  buttonSprites[6] = loadImage("none.png");
   
   // Images for titles/background
   titlesettings = loadImage("titlesettings.png");
@@ -64,6 +66,8 @@ void setup() {
   btnSettings = new Button (265, 550, 250, 50, 390, 570, "Settings", 50, 1);
   btnBack = new Button(300, 785, 200, 75, 400, 820, "Back", 50, 2);
   btnCredits = new Button (280, 650, 200, 50, 385, 680, "Credits", 50, 3);
+  btnPause = new Button (100,100,80,80,100,100, "Pause", 50, 4);
+  btnReset = new Button (400,400,200,100,500,500, "Reset", 50, 5);
 
 
   tileSize = 800 / cols;
@@ -86,6 +90,12 @@ void draw() {
   case 'C':
     creditscreen();
     break;
+   case 'R':
+     pausescreen();
+     break;
+   case '1':
+     setupOne();
+     break;
   }
 }
 
@@ -118,6 +128,16 @@ void mousePressed() {
    case 'C':
      if (btnBack.clicked()) {
        screen = 'M';
+       break;
+     }
+   case 'P':
+     if(btnPause.clicked()) {
+       screen = 'R';
+       break;
+     }
+   case 'R':
+     if(btnReset.clicked()) {
+       screen = '1';
        break;
      }
   }
@@ -170,6 +190,15 @@ void creditscreen() {
   image(titlecredits, 200, 50);
 }
 
+void pausescreen() {
+  background(#010031);
+  image(background, 0, 0);
+  btnBack.display();
+  btnBack.hover();
+  btnReset.display();
+  btnReset.hover();
+}
+
 void levelDraw() {
   background(#010031);
   grid.displayLayers(0, 2);
@@ -187,6 +216,11 @@ void levelDraw() {
   grid.displayLayers(3, 4);
 
   grid.checkDoors(player);
+  
+  btnPause.display();
+  btnPause.hover();
+  
+ 
 }
 
 void loadLevel(int lvl) {
@@ -212,7 +246,8 @@ void advanceToNextLevel() {
 // v LEVEL CODE v
 
 void setupOne() { // each level should have a corresponding setup+levelnumber
-
+  background(0);
+  println("screen1");
   grid.setTileSprite(0, 1, 3, 0); // x, y, layer, sprite
   grid.setTileSprite(0, 2, 3, 0);
   grid.setSolid(0, 1, true); // x, y, solid
