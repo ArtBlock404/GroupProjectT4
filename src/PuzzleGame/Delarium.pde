@@ -57,8 +57,8 @@ void setup() {
   background = loadImage("background.png");
 
   tileSprites = new PImage[2];
-  tileSprites[0] = loadImage("Test.png"); // example
-  tileSprites[1] = loadImage("Test2.PNG"); // example
+  tileSprites[0] = loadImage("Bush.png"); // example
+  tileSprites[1] = loadImage("Rock.png"); // example
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, "Play", 150, 0);
   btnSettings = new Button (265, 550, 250, 50, 390, 570, "Settings", 50, 1);
@@ -127,9 +127,9 @@ void mousePressed() {
 
 void settingscreen() {
   //The settings screen
-  background(0);
+  background(#010031);
   image(background, 0, 0);
-  fill(255);
+  fill(#010031);
   btnBack.display();
   btnBack.hover();
   image(titlesettings, 175, 50);
@@ -138,12 +138,12 @@ void settingscreen() {
 
 void startscreen() {
   //Main menu
-  background(0);
+  background(#010031);
   image(background, 0, 0);
   //float dx = mouseX - xpos;
   //animation1.display(xpos-animation1.getWidth()/2, ypos);
   //xpos = xpos + dx/drag;
-  fill(255);
+  fill(#080027);
   textAlign(CENTER, CENTER);
   textMode(CENTER);
   textSize(70);
@@ -159,7 +159,7 @@ void startscreen() {
 
 void creditscreen() {
   //Credits
-  background (0);
+  background (#010031);
   image(background, 0, 0);
   fill(255);
   textAlign(CENTER,CENTER);
@@ -171,7 +171,7 @@ void creditscreen() {
 }
 
 void levelDraw() {
-  background(0);
+  background(#010031);
   grid.displayLayers(0, 2);
 
   grid.displayButtons();
@@ -213,14 +213,14 @@ void advanceToNextLevel() {
 
 void setupOne() { // each level should have a corresponding setup+levelnumber
 
-  grid.setTileSprite(0, 1, 3, 0);
+  grid.setTileSprite(0, 1, 3, 0); // x, y, layer, sprite
   grid.setTileSprite(0, 2, 3, 0);
-  grid.setSolid(0, 1, true);
+  grid.setSolid(0, 1, true); // x, y, solid
   grid.setSolid(0, 2, true);
   grid.setSolid(2, 2, true);
 
-  grid.addPushableTile(4, 4, 2, 0);
-  grid.addDoor(2, 2, 1);
+  grid.addPushableTile(4, 4, 2, 1);
+  grid.addDoor(2, 2, 3);
   //ADDING BUTTONS: (x, y (button location), PImage #,
   // x, y (tile targeted), PImage for targeted sprite, solid true or false)
   // total of 6 ints and 1 boolean
@@ -231,11 +231,11 @@ void setupOne() { // each level should have a corresponding setup+levelnumber
 
 void setupTwo() {
 
-  grid.setTileSprite(1, 1, 0, 0);
+  grid.setTileSprite(1, 1, 3, 0);
   grid.setSolid(1, 1, true);
-  grid.setTileSprite(2, 1, 0, 0);
+  grid.setTileSprite(2, 1, 3, 0);
   grid.setSolid(2, 1, true);
-  grid.setTileSprite(3, 1, 0, 0);
+  grid.setTileSprite(3, 1, 3, 0);
   grid.setSolid(3, 1, true);
   grid.addPushableTile(4, 4, 2, 0);
 
