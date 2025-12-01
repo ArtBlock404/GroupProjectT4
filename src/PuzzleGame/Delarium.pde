@@ -73,6 +73,7 @@ void setup() {
   tileSize = 800 / cols;
   offsetY = 100;
 
+//Calling level drawer, we need to move this somewhere else
   loadLevel(level);
 }
 
@@ -94,7 +95,7 @@ void draw() {
      pausescreen();
      break;
    case '1':
-     setupOne();
+     setupOne(); //Need to replace this with loadLevel(1);
      break;
   }
 }
@@ -136,7 +137,7 @@ void mousePressed() {
        break;
      }
    case 'R':
-     if(btnReset.clicked()) {
+     if(btnReset.clicked()) { //probably need to add an if statement detecting what level it currently is
        screen = '1';
        break;
      }
@@ -200,6 +201,9 @@ void pausescreen() {
 }
 
 void levelDraw() {
+
+//Put this into the level methods, doesn't make sense why we do this seperately if we can load it together with the levels
+//Seems like this is just calling up all the methods to make the game work
   background(#010031);
   grid.displayLayers(0, 2);
 
@@ -223,6 +227,7 @@ void levelDraw() {
  
 }
 
+//How we're setting the level??? Where in the code are we actually setting the levels? We need to find a way to call up the levels using switch statements probably
 void loadLevel(int lvl) {
   level = lvl;
 
@@ -246,7 +251,6 @@ void advanceToNextLevel() {
 // v LEVEL CODE v
 
 void setupOne() { // each level should have a corresponding setup+levelnumber
-  background(0);
   println("screen1");
   grid.setTileSprite(0, 1, 3, 0); // x, y, layer, sprite
   grid.setTileSprite(0, 2, 3, 0);
@@ -315,3 +319,4 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
+
