@@ -2,18 +2,15 @@
 
 class Button {
   PImage sprite, arrow;        
-  int x, y, w, h, r, i, size;
+  int x, y, w, h, r, i;
   boolean over;
-  String val;
-  Button(int x, int y, int w, int h, int r, int i, String val, int size, int spriteIndex) {
+  Button(int x, int y, int w, int h, int r, int i, int spriteIndex) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.r = r;
     this.i = i;
-    this.val = val;
-    this.size = size;
     over = false;
 
     sprite = buttonSprites[spriteIndex];
