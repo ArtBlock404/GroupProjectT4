@@ -1,4 +1,5 @@
 
+
 // TABLE OF CONTENTS
 // 21 - 40: setup
 // 44 - 56: draw
@@ -74,6 +75,7 @@ void setup() {
   offsetY = 100;
 
 //Calling level drawer, we need to move this somewhere else
+// no, this is the correct placement
   loadLevel(level);
 }
 
@@ -95,7 +97,7 @@ void draw() {
      pausescreen();
      break;
    case '1':
-     setupOne(); //Need to replace this with loadLevel(1);
+     setup1(); 
      break;
   }
 }
@@ -204,6 +206,7 @@ void levelDraw() {
 
 //Put this into the level methods, doesn't make sense why we do this seperately if we can load it together with the levels
 //Seems like this is just calling up all the methods to make the game work
+// this is the draw function for the actual game, this is  so the game doesnt run on the main menu
   background(#010031);
   grid.displayLayers(0, 2);
 
@@ -228,15 +231,16 @@ void levelDraw() {
 }
 
 //How we're setting the level??? Where in the code are we actually setting the levels? We need to find a way to call up the levels using switch statements probably
+// its "void advsnceToNextLevel" that changes the level by 1, you can maualy change the level int to select a level
 void loadLevel(int lvl) {
   level = lvl;
 
   grid = new Grid(cols, rows, tileSize, offsetY, tileSprites);
 
   if (level ==1) {
-    setupOne();
+    setup1();
   } else if (level == 2) {
-    setupTwo();
+    setup2();
   } else {
     setupEmptyLevel();
   }
@@ -250,7 +254,7 @@ void advanceToNextLevel() {
 
 // v LEVEL CODE v
 
-void setupOne() { // each level should have a corresponding setup+levelnumber
+void setup1() { // each level should have a corresponding setup+levelnumber
   println("screen1");
   grid.setTileSprite(0, 1, 3, 0); // x, y, layer, sprite
   grid.setTileSprite(0, 2, 3, 0);
@@ -268,7 +272,7 @@ void setupOne() { // each level should have a corresponding setup+levelnumber
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
 
-void setupTwo() {
+void setup2() {
 
   grid.setTileSprite(1, 1, 3, 0);
   grid.setSolid(1, 1, true);
@@ -283,7 +287,7 @@ void setupTwo() {
   player = new Player(grid, 5, 5, color(255, 200, 0));
 }
 
-void setupThree() {
+void setup3() {
   grid.setTileSprite(1, 1, 0, 0);
   grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
@@ -299,7 +303,7 @@ void setupThree() {
   player = new Player(grid, 5, 5, color(255, 200, 0));
 }
 
-void setupFour() {
+void setup4() {
   grid.setTileSprite(1, 1, 0, 0);
   grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
