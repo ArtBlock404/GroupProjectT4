@@ -36,9 +36,6 @@ PFont PixelFont;
 
 void setup() {
   size(800, 900);
-  //animation1 = new Animation("PT_Shifty_", 38);
-  
-  //ypos = height * 0.25;
 
   PixelFont = createFont("PixelFont.ttf", 32);
   textFont(PixelFont);
