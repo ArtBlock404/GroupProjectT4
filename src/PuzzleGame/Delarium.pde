@@ -26,7 +26,7 @@ char screen = 'M'; // M = main menu, S = settings, C = credits, P = play, R = pa
 PImage[] buttonSprites;
 PImage titlesettings, titlecredits, titlelogo, background;
 
-Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnReset, btnMenu;
+Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnMenu;
 
 int level = 1;
 int cols = 10;
@@ -50,8 +50,8 @@ void setup() {
   buttonSprites[1] = loadImage("settings.png");
   buttonSprites[2] = loadImage("back.png");
   buttonSprites[3] = loadImage("credits.png");
-  buttonSprites[4] = loadImage("credits.png");
-  buttonSprites[5] = loadImage("credits.png");
+  buttonSprites[4] = loadImage("none.png");
+  buttonSprites[5] = loadImage("none.png");
   buttonSprites[6] = loadImage("none.png");
   
   // Images for titles/background
@@ -67,8 +67,8 @@ void setup() {
   btnSettings = new Button (265, 550, 250, 50, 390, 570, "Settings", 50, 1);
   btnBack = new Button(300, 785, 200, 75, 400, 820, "Back", 50, 2);
   btnCredits = new Button (280, 650, 200, 50, 385, 680, "Credits", 50, 3);
-  btnPause = new Button (100,100,80,80,100,100, "Pause", 50, 4);
-  btnReset = new Button (400,400,200,100,500,500, "Reset", 50, 5);
+  btnPause = new Button (10,10,80,80,50,50, "Pause", 50, 4);
+  btnMainMenu = new Button (320,400,200,100,400,450, "Reset", 50, 5);
 
 
   tileSize = 800 / cols;
@@ -95,9 +95,6 @@ void draw() {
     break;
    case 'R':
      pausescreen();
-     break;
-   case '1':
-     setup1(); 
      break;
   }
 }
@@ -139,10 +136,14 @@ void mousePressed() {
        break;
      }
    case 'R':
-     if(btnReset.clicked()) { //probably need to add an if statement detecting what level it currently is
-       screen = '1';
+     if(btnMainMenu.clicked()) { //probably need to add an if statement detecting what level it currently is
+       screen = 'M';
+       break;
+     } else if (btnBack.clicked()) {
+       screen = 'P';
        break;
      }
+     
   }
   println("screen:" + screen);
 }
@@ -196,10 +197,11 @@ void creditscreen() {
 void pausescreen() {
   background(#010031);
   image(background, 0, 0);
+  text("PAUSED", 400, 100);
   btnBack.display();
   btnBack.hover();
-  btnReset.display();
-  btnReset.hover();
+  btnMainMenu.display();
+  btnMainMenu.hover();
 }
 
 void levelDraw() {
@@ -323,4 +325,3 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
-
