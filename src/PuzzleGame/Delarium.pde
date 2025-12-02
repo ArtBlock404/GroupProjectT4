@@ -63,12 +63,12 @@ void setup() {
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
 
-  btnPlay = new Button(200, 350, 400, 150, 400, 421, "Play", 150, 0);
-  btnSettings = new Button (265, 550, 250, 50, 390, 570, "Settings", 50, 1);
-  btnBack = new Button(300, 785, 200, 75, 400, 820, "Back", 50, 2);
-  btnCredits = new Button (280, 650, 200, 50, 385, 680, "Credits", 50, 3);
-  btnPause = new Button (10,10,80,80,50,50, "Pause", 50, 4);
-  btnMainMenu = new Button (320,400,200,100,400,450, "Reset", 50, 5);
+  btnPlay = new Button(200, 350, 400, 150, 400, 421, 0);
+  btnSettings = new Button (265, 550, 250, 50, 390, 570, 1);
+  btnBack = new Button(300, 785, 200, 75, 400, 820, 2);
+  btnCredits = new Button (280, 650, 200, 50, 385, 680, 3);
+  btnPause = new Button (10,10,80,80,50,50, 4);
+  btnMainMenu = new Button (320,400,200,100,400,450, 5);
 
 
   tileSize = 800 / cols;
