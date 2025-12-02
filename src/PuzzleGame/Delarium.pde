@@ -10,8 +10,6 @@
 
 import java.util.ArrayList;
 
-//Animation animation1;
-
 float xpos;
 float ypos;
 float drag = 30.0;
