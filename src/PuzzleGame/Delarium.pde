@@ -1,5 +1,3 @@
-
-
 // TABLE OF CONTENTS
 // 21 - 40: setup
 // 44 - 56: draw
@@ -35,6 +33,8 @@ int tileSize = 800 / cols;
 int offsetY = 100;
 
 PFont PixelFont;
+
+// | SETS UP TILES/BUTTONS ||
 
 void setup() {
   size(800, 900);
@@ -76,10 +76,10 @@ void setup() {
   tileSize = 800 / cols;
   offsetY = 100;
 
-//Calling level drawer, we need to move this somewhere else
-// no, this is the correct placement
   loadLevel(level);
 }
+
+// | SCREEN MANAGER |
 
 void draw() {
   switch(screen) {
@@ -101,13 +101,16 @@ void draw() {
   }
 }
 
+// | PLAYER MOVEMENT |
+
 void keyPressed() {
-  //Player movement
   if (key == 'w' || key == 'W' || keyCode == UP) player.move(0, -1);
   if (key == 's' || key == 'S' || keyCode == DOWN) player.move(0, 1);
   if (key == 'a' || key == 'A' || keyCode == LEFT) player.move(-1, 0);
   if (key == 'd' || key == 'D' || keyCode == RIGHT) player.move(1, 0);
 }
+
+// | DETECTS MOUSE CLICKS |
 
 void mousePressed() {
   switch(screen) {
@@ -154,6 +157,7 @@ void mousePressed() {
   println("screen:" + screen);
 }
 
+// | SCREENS CODE |
 
 void settingscreen() {
   //The settings screen
@@ -170,9 +174,6 @@ void startscreen() {
   //Main menu
   background(#010031);
   image(background, 0, 0);
-  //float dx = mouseX - xpos;
-  //animation1.display(xpos-animation1.getWidth()/2, ypos);
-  //xpos = xpos + dx/drag;
   fill(#080027);
   textAlign(CENTER, CENTER);
   textMode(CENTER);
@@ -201,6 +202,7 @@ void creditscreen() {
 }
 
 void pausescreen() {
+  //pause screen
   background(#010031);
   image(background, 0, 0);
   text("PAUSED", 400, 100);
@@ -212,11 +214,10 @@ void pausescreen() {
   btnReset.hover();
 }
 
+// | DRAW FUNCTION FOR GAME SO IT DOESN't LOAD ON THE MAIN MENU |
+
 void levelDraw() {
 
-//Put this into the level methods, doesn't make sense why we do this seperately if we can load it together with the levels
-//Seems like this is just calling up all the methods to make the game work
-// this is the draw function for the actual game, this is  so the game doesnt run on the main menu
   background(#010031);
   grid.displayLayers(0, 2);
 
@@ -240,8 +241,8 @@ void levelDraw() {
  
 }
 
-//How we're setting the level??? Where in the code are we actually setting the levels? We need to find a way to call up the levels using switch statements probably
-// its "void advsnceToNextLevel" that changes the level by 1, you can maualy change the level int to select a level
+// | STORES AND CALLS THE LEVELS UP |
+
 void loadLevel(int lvl) {
   level = lvl;
 
@@ -262,7 +263,7 @@ void advanceToNextLevel() {
   loadLevel(level + 1);
 }
 
-// v LEVEL CODE v
+// | LEVEL CODE |
 
 void setup1() { // each level should have a corresponding setup+levelnumber
   println("screen1");
