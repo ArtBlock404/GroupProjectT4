@@ -1,7 +1,3 @@
-
-// arguably the most important class, the tile class calls all the tiles to the grid.
-// it is the baseline for every object in the game
-
 class Tile {
   int gridX, gridY;
   int size;
@@ -35,7 +31,7 @@ class Tile {
       if (idx >= 0 && idx < sprites.length && sprites[idx] != null) {
         image(sprites[idx], px, py, size, size);
       } else if (i == 0 && startLayer == 0) {
-        fill(40);
+        fill(#1B0C43);
         rect(px, py, size, size);
       }
     }
@@ -48,9 +44,7 @@ class Tile {
   }
 
   int getSpriteIndex(int layer) {
-    if (layer >= 0 && layer < spriteIndices.length) {
-      return spriteIndices[layer];
-    }
+    if (layer >= 0 && layer < numLayers) return spriteIndices[layer];
     return -1;
   }
 }
