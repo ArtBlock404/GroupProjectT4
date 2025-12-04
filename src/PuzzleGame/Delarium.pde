@@ -1,3 +1,4 @@
+
 // TABLE OF CONTENTS
 // 21 - 40: setup
 // 44 - 56: draw
@@ -49,23 +50,27 @@ void setup() {
   buttonSprites[5] = loadImage("none.png");
   buttonSprites[6] = loadImage("none.png");
   buttonSprites[7] = loadImage("none.png");
-  
+
   // Images for titles/background
   titlesettings = loadImage("titlesettings.png");
   titlecredits = loadImage("titlecredits.png");
   background = loadImage("background.png");
 
-  tileSprites = new PImage[2];
+  tileSprites = new PImage[4];
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
+  tileSprites[2] = loadImage("door.png"); // example
+  tileSprites[3] = loadImage("door.png"); // example
+
+
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, 0);
   btnSettings = new Button (265, 550, 250, 50, 390, 570, 1);
   btnBack = new Button(300, 785, 200, 75, 400, 820, 2);
   btnCredits = new Button (280, 650, 200, 50, 385, 680, 3);
-  btnPause = new Button (10,10,80,80,50,50, 4);
-  btnMainMenu = new Button (320,400,200,100,400,450, 5);
-  btnReset = new Button (320,600,200,100,400,600, 5);
+  btnPause = new Button (10, 10, 80, 80, 50, 50, 4);
+  btnMainMenu = new Button (320, 400, 200, 100, 400, 450, 5);
+  btnReset = new Button (320, 600, 200, 100, 400, 600, 5);
 
 
   tileSize = 800 / cols;
@@ -90,9 +95,9 @@ void draw() {
   case 'C':
     creditscreen();
     break;
-   case 'R':
-     pausescreen();
-     break;
+  case 'R':
+    pausescreen();
+    break;
   }
 }
 
@@ -120,34 +125,33 @@ void mousePressed() {
       screen = 'C';
       break;
     }
-   case 'S':
-     if(btnBack.clicked()) {
-       screen = 'M';
-       break;
-     }
-   case 'C':
-     if (btnBack.clicked()) {
-       screen = 'M';
-       break;
-     }
-   case 'P':
-     if(btnPause.clicked()) {
-       screen = 'R';
-       break;
-     }
-   case 'R':
-     if(btnMainMenu.clicked()) { //probably need to add an if statement detecting what level it currently is
-       screen = 'M';
-       break;
-     } else if (btnBack.clicked()) {
-       screen = 'P';
-       break;
-     } else if (btnReset.clicked()) {
-       screen = 'P';
-       loadLevel(level);
-       break;
-     }
-     
+  case 'S':
+    if (btnBack.clicked()) {
+      screen = 'M';
+      break;
+    }
+  case 'C':
+    if (btnBack.clicked()) {
+      screen = 'M';
+      break;
+    }
+  case 'P':
+    if (btnPause.clicked()) {
+      screen = 'R';
+      break;
+    }
+  case 'R':
+    if (btnMainMenu.clicked()) { //probably need to add an if statement detecting what level it currently is
+      screen = 'M';
+      break;
+    } else if (btnBack.clicked()) {
+      screen = 'P';
+      break;
+    } else if (btnReset.clicked()) {
+      screen = 'P';
+      loadLevel(level);
+      break;
+    }
   }
   println("screen:" + screen);
 }
@@ -162,7 +166,6 @@ void settingscreen() {
   btnBack.display();
   btnBack.hover();
   image(titlesettings, 175, 50);
-  
 }
 
 void startscreen() {
@@ -174,7 +177,7 @@ void startscreen() {
   textMode(CENTER);
   textSize(70);
   text("DELARIUM", 400, 100);
-  rect(150,50,500,185);
+  rect(150, 50, 500, 185);
   btnPlay.display();
   btnSettings.display();
   btnCredits.display();
@@ -188,7 +191,7 @@ void creditscreen() {
   background (#010031);
   image(background, 0, 0);
   fill(255);
-  textAlign(CENTER,CENTER);
+  textAlign(CENTER, CENTER);
   textMode(CENTER);
   textSize(70);
   btnBack.display();
@@ -225,15 +228,13 @@ void levelDraw() {
 
   player.update();
   player.display();
-  
+
   grid.displayLayers(3, 4);
 
   grid.checkDoors(player);
-  
+
   btnPause.display();
   btnPause.hover();
-  
- 
 }
 
 // | STORES AND CALLS THE LEVELS UP |
@@ -273,7 +274,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   //ADDING BUTTONS: (x, y (button location), PImage #,
   // x, y (tile targeted), PImage for targeted sprite, solid true or false)
   // total of 6 ints and 1 boolean
-  grid.addButton(7, 4, 2, 2, 2, 1, false);
+  grid.addButton(7, 4, 2, 2, 2, 1, false, 1);
 
   player = new Player(grid, 0, 0, color(255, 200, 0));
 }
