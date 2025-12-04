@@ -2,7 +2,7 @@ class Grid {
   int cols, rows;
   int tileSize;
   int offsetY;
-  int DOOR_LAYER = 2;
+  int DOOR_LAYER = 1;
 
   Tile[][] tiles;
   PImage[] sprites;
@@ -10,6 +10,8 @@ class Grid {
   ArrayList<PushableTile> pushables = new ArrayList<>();
   ArrayList<ButtonTile> buttons = new ArrayList<>();
   ArrayList<DoorTile> doors = new ArrayList<>();
+  ArrayList<HazardTile> hazards = new ArrayList<>();
+
 
   Grid(int cols, int rows, int tileSize, int offsetY, PImage[] sprites) {
     this.cols = cols;
@@ -63,7 +65,7 @@ class Grid {
   void addPushableTile(int gx, int gy, int layer, int spriteIndex) {
     pushables.add(new PushableTile(
       gx, gy, tileSize, offsetY, sprites[spriteIndex], layer
-    ));
+      ));
   }
 
   boolean isOccupied(int gx, int gy, PushableTile ignore) {
@@ -101,7 +103,7 @@ class Grid {
   void addDoor(int gx, int gy, int spriteIndex) {
     doors.add(new DoorTile(
       gx, gy, tileSize, offsetY, sprites[spriteIndex]
-    ));
+      ));
   }
 
   void displayDoors() {
@@ -118,15 +120,12 @@ class Grid {
   }
 
 
-  // --------------------------------------------------------------------
-  // BUTTONS
-  // --------------------------------------------------------------------
+  
   void addButton(int bx, int by,
     int spriteIndex,
     int targetX, int targetY,
-    int newSpriteIndex, boolean newSolid,
-    int triggerNum
-  ) {
+    int newSpriteIndex, int revertSpriteIndex, boolean newSolid,
+    int triggerNum) {
 
     PImage spr = sprites[spriteIndex];
 
@@ -141,12 +140,13 @@ class Grid {
     b.targetX = targetX;
     b.targetY = targetY;
     b.newSpriteIndex = newSpriteIndex;
+    b.revertSpriteIndex = revertSpriteIndex; // <- new field
     b.newSolid = newSolid;
-
     b.triggerNum = triggerNum;
 
     buttons.add(b);
   }
+
 
   void displayButtons() {
     for (ButtonTile b : buttons) b.display();
@@ -156,59 +156,66 @@ class Grid {
   void checkButtons() {
     for (ButtonTile b : buttons) {
 
-      boolean pressedNow = false;
-
-      // detect new press
+      // Count how many pushables are on this button
+      int numOnButton = 0;
       for (PushableTile block : pushables) {
-        if (b.isOnButton(block)) {
-          pressedNow = true;
-          break;
-        }
+        if (b.isOnButton(block)) numOnButton++;
       }
 
-      // BUTTON PRESSED THIS FRAME
-      if (pressedNow && !b.isPressed) {
-        b.isPressed = true;
-        b.triggered++;
+      boolean fullyPressed = (numOnButton >= b.triggerNum);
 
-        if (b.triggered == b.triggerNum) {
-          onButtonTriggered(b);
-        }
+      // BUTTON PRESSED THIS FRAME
+      if (fullyPressed && !b.isPressed) {
+        b.isPressed = true;
+        onButtonTriggered(b);
       }
 
       // BUTTON RELEASED THIS FRAME
-      if (!pressedNow && b.isPressed) {
+      if (!fullyPressed && b.isPressed) {
         b.isPressed = false;
-        b.triggered--;
-        if (b.triggered < 0) b.triggered = 0;
-
-        if (b.triggered < b.triggerNum) {
-          onButtonReleased(b);
-        }
+        onButtonReleased(b);
       }
     }
   }
+
 
   void onButtonTriggered(ButtonTile b) {
     println("ALL BUTTONS ACTIVATED → opening");
 
-    // save old tile state (only first time)
-    if (b.oldSpriteIndex == -1) {
-      b.oldSolid = isSolid(b.targetX, b.targetY);
-      b.oldSpriteIndex = tiles[b.targetX][b.targetY].getSpriteIndex(DOOR_LAYER);
-    }
-
-    // apply new
-    setTileSprite(b.targetX, b.targetY, DOOR_LAYER, b.newSpriteIndex);
+    // Overlay the new sprite above the door
+    setTileSprite(b.targetX, b.targetY, DOOR_LAYER + 1, b.newSpriteIndex);
     setSolid(b.targetX, b.targetY, b.newSolid);
   }
 
-  void onButtonReleased(ButtonTile b) {
-    println("Buttons below requirement → closing");
+ void onButtonReleased(ButtonTile b) {
+  println("Buttons below requirement → closing");
+  setTileSprite(b.targetX, b.targetY, DOOR_LAYER + 1, b.revertSpriteIndex);
+  setSolid(b.targetX, b.targetY, !b.newSolid); // revert solidity
+}
 
-    if (b.oldSpriteIndex != -1) {
-      setTileSprite(b.targetX, b.targetY, DOOR_LAYER, b.oldSpriteIndex);
-      setSolid(b.targetX, b.targetY, b.oldSolid);
+
+
+
+  void addHazard(int gx, int gy, int spriteIndex) {
+    hazards.add(new HazardTile(
+      gx, gy, tileSize, offsetY, sprites[spriteIndex]
+      ));
+  }
+
+  void displayHazards() {
+    for (HazardTile h : hazards) h.display();
+  }
+
+  void checkHazards(Player p) {
+    for (HazardTile h : hazards) {
+      if (h.isOnHazard(p)) {
+        onHazardTriggered();
+        return;
+      }
     }
+  }
+
+  void onHazardTriggered() {
+    println("you have died");
   }
 }
