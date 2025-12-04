@@ -3,7 +3,6 @@ class HazardTile {
   int tileSize;
   int offsetY;
   PImage sprite;
-  boolean triggered = false;
 
   HazardTile(int gx, int gy, int tileSize, int offsetY, PImage sprite) {
     this.gridX = gx;
@@ -16,25 +15,10 @@ class HazardTile {
   void display() {
     int px = gridX * tileSize;
     int py = gridY * tileSize + offsetY;
-    if (sprite != null) {
-      image(sprite, px, py, tileSize, tileSize);
-    } else {
-
-      noStroke();
-      fill(255, 0, 0);
-      rect(px, py, tileSize, tileSize);
-    }
+    image(sprite, px, py, tileSize, tileSize);
   }
 
-
-  boolean checkPlayer(Player p) {
-
-    if (triggered) return false;
-
-    if (p.gridX == gridX && p.gridY == gridY && !p.isMoving) {
-      triggered = true;
-      return true;
-    }
-    return false;
+  boolean isOnHazard(Player p) {
+    return p.gridX == gridX && p.gridY == gridY && !p.isMoving;
   }
 }
