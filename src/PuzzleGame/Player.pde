@@ -10,16 +10,16 @@ class Player {
   float x, y;        // Actual drawing position for smooth movement
   float targetX, targetY;
   int size;
-  color col;
+  PImage player;
   Grid grid;
   boolean isMoving = false;
 
-  Player(Grid grid, int startGX, int startGY, color col) {
+  Player(Grid grid, int startGX, int startGY, PImage player) {
     this.grid = grid;
     this.gridX = startGX;
     this.gridY = startGY;
+    this.player = player;
     this.size = grid.tileSize;
-    this.col = col;
     this.x = gridX * size;
     this.y = gridY * size + grid.offsetY;
     this.targetX = x;
@@ -40,9 +40,8 @@ class Player {
   }
 
   void display() {
-    fill(col);
-    noStroke();
-    rect(x, y, size, size);
+    image(player, x, y);
+    player.resize(80,80);
   }
 
   void move(int dx, int dy) {
