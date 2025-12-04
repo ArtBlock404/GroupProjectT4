@@ -21,7 +21,7 @@ Player player;
 Button[] buttons = new Button[4];
 char screen = 'M'; // M = main menu, S = settings, C = credits, P = play, R = pause
 PImage[] buttonSprites;
-PImage titlesettings, titlecredits, titlelogo, background;
+PImage titlesettings, titlecredits, titlelogo, background, title;
 
 Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnMenu, btnReset;
 
@@ -55,13 +55,18 @@ void setup() {
   titlesettings = loadImage("titlesettings.png");
   titlecredits = loadImage("titlecredits.png");
   background = loadImage("background.png");
+  title = loadImage("test1titleflowers.png");
 
-  tileSprites = new PImage[5];
+  tileSprites = new PImage[9];
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
   tileSprites[2] = loadImage("door.png"); // example
   tileSprites[3] = loadImage("doorOpen.png"); // example
-  tileSprites[4] = loadImage("fairyring.png");
+  tileSprites[4] = loadImage("fairyringL1.png");
+  tileSprites[5] = loadImage("fairyringL2.png");
+  tileSprites[6] = loadImage("wall.png");
+  tileSprites[7] = loadImage("topWall.png");
+  tileSprites[8] = loadImage("bush2.png");
 
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, 0);
@@ -172,12 +177,11 @@ void startscreen() {
   //Main menu
   background(#010031);
   image(background, 0, 0);
+  image(title, 150, 70);
   fill(#080027);
   textAlign(CENTER, CENTER);
   textMode(CENTER);
   textSize(70);
-  text("DELARIUM", 400, 100);
-  rect(150, 50, 500, 185);
   btnPlay.display();
   btnSettings.display();
   btnCredits.display();
@@ -266,43 +270,50 @@ void advanceToNextLevel() {
 
 void setup1() { // each level should have a corresponding setup+levelnumber
   println("screen1");
-  grid.setTileSprite(0, 1, 3, 0); // x, y, layer, sprite
+  grid.setTileSprite(0, 1, 3, 8); // x, y, layer, sprite
   grid.setTileSprite(0, 2, 3, 0);
   grid.setTileSprite(0, 3, 3, 0);
   grid.setTileSprite(0, 4, 3, 0);
   grid.setTileSprite(0, 5, 3, 0);
-  grid.setTileSprite(0, 6, 3, 0);
-  grid.setTileSprite(0, 7, 3, 0);
-  grid.setTileSprite(0, 8, 3, 0);
-  grid.setTileSprite(0, 9, 3, 0);
-  grid.setTileSprite(1, 7, 3, 0);
-  grid.setTileSprite(2, 7, 3, 0);
-  grid.setTileSprite(1, 9, 3, 0);
-  grid.setTileSprite(2, 9, 3, 0);
+  grid.setTileSprite(0, 6, 3, 8);
+  grid.setTileSprite(0, 7, 3, 7);
+  grid.setTileSprite(0, 8, 3, 7);
+  grid.setTileSprite(0, 9, 3, 7);
+  grid.setTileSprite(1, 7, 3, 6);
+  grid.setTileSprite(2, 7, 3, 6);
+  grid.setTileSprite(1, 9, 3, 6);
+  grid.setTileSprite(2, 9, 3, 6);
   grid.setTileSprite(3, 2, 3, 0);
-  grid.setTileSprite(4, 2, 3, 0);
-  grid.setTileSprite(5, 2, 3, 0);
-  grid.setTileSprite(6, 2, 3, 0);
+  grid.setTileSprite(4, 2, 3, 8);
+  grid.setTileSprite(5, 2, 3, 6);
+  grid.setTileSprite(6, 2, 3, 6);
   grid.setTileSprite(6, 3, 3, 0);
-  grid.setTileSprite(6, 4, 3, 0);
+  grid.setTileSprite(6, 4, 3, 8);
   grid.setTileSprite(6, 5, 3, 0);
-  grid.setTileSprite(6, 6, 3, 0);
+  grid.setTileSprite(6, 6, 3, 8);
   grid.setTileSprite(3, 3, 3, 0);
   grid.setTileSprite(3, 4, 3, 0);
   grid.setTileSprite(3, 5, 3, 0);
   grid.setTileSprite(9, 1, 3, 0);
   grid.setTileSprite(9, 2, 3, 0);
   grid.setTileSprite(9, 3, 3, 0);
-  grid.setTileSprite(9, 4, 3, 0);
-  grid.setTileSprite(9, 5, 3, 0);
+  grid.setTileSprite(9, 4, 3, 8);
+  grid.setTileSprite(9, 5, 3, 8);
   grid.setTileSprite(9, 6, 3, 0);
   grid.setTileSprite(9, 7, 3, 0);
   grid.setTileSprite(9, 8, 3, 0);
-  grid.setTileSprite(9, 9, 3, 0);
+  grid.setTileSprite(9, 9, 3, 8);
   grid.setTileSprite(8, 5, 3, 0);
   grid.setTileSprite(7, 9, 3, 0);
   grid.setTileSprite(8, 9, 3, 0);
   grid.setTileSprite(2, 3, 3, 0);
+  grid.setTileSprite(5, 3, 3, 5);
+  grid.setTileSprite(0, 0, 3, 6);
+  grid.setTileSprite(1, 0, 3, 6);
+  grid.setTileSprite(9, 0, 3, 6);
+  grid.setTileSprite(8, 0, 3, 6);
+  grid.setTileSprite(3, 7, 3, 8);
+  
   grid.setSolid(0, 1, true); // x, y, solid
   grid.setSolid(0, 2, true);
   grid.setSolid(0, 3, true);
@@ -340,6 +351,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setSolid(8, 5, true);
   grid.setSolid(8, 9, true);
   grid.setSolid(7, 9, true);
+  grid.setSolid(2, 3, true);
   
 
   grid.addPushableTile(6, 1, 2, 1);
@@ -354,18 +366,34 @@ void setup1() { // each level should have a corresponding setup+levelnumber
 }
 
 void setup2() {
-
+  
+  grid.setTileSprite(0, 0, 1, 3);
+  grid.setTileSprite(0, 1, 3, 0);
   grid.setTileSprite(1, 1, 3, 0);
-  grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 3, 0);
-  grid.setSolid(2, 1, true);
   grid.setTileSprite(3, 1, 3, 0);
+  grid.setTileSprite(3, 2, 3, 0);
+  grid.setTileSprite(3, 3, 3, 0);
+  grid.setTileSprite(3, 4, 3, 0);
+  grid.setTileSprite(2, 4, 3, 0);
+  grid.setTileSprite(1, 4, 3, 0);
+  grid.setTileSprite(9, 3, 3, 0);
+  grid.setTileSprite(8, 3, 3, 0);
+  grid.setTileSprite(7, 3, 3, 0);
+  grid.setTileSprite(6, 3, 3, 0);
+  grid.setTileSprite(6, 4, 3, 0);
+  grid.setTileSprite(6, 5, 3, 0);
+  grid.setTileSprite(6, 6, 3, 0);
+  
+  
+  grid.setSolid(1, 1, true);
+  grid.setSolid(2, 1, true);
   grid.setSolid(3, 1, true);
-  grid.addPushableTile(4, 4, 2, 0);
+  
+  grid.addPushableTile(8, 1, 2, 1);
+  grid.addDoor(2, 3, 2);
 
-  grid.addDoor(8, 8, 2);
-
-  player = new Player(grid,1,2);
+  player = new Player(grid,0,0);
 }
 
 void setup3() {
