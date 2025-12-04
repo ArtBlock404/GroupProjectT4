@@ -1,76 +1,105 @@
-
-// The player Class!
-// this is where all of the movment takes place, 
-// making sure that the player only moves one tile at a time,
-// in a straight line and clicking with the grid.
-// also smooths movement so it doesent snap to the grid imediately.
-
 class Player {
-  int gridX, gridY;  // Current grid coordinates
-  float x, y;        // Actual drawing position for smooth movement
+  int gridX, gridY;
+  float x, y;
   float targetX, targetY;
   int size;
-  PImage player;
   Grid grid;
   boolean isMoving = false;
 
-  Player(Grid grid, int startGX, int startGY, PImage player) {
+  PImage[] walkUp, walkDown, walkLeft, walkRight;
+  PImage[] idleUp, idleDown, idleLeft, idleRight;
+  PImage[] currentAnim;
+
+  int frame = 0;
+  int timer = 0;
+  int speed = 8;
+  String dir = "down";
+
+  Player(Grid grid, int gx, int gy) {
     this.grid = grid;
-    this.gridX = startGX;
-    this.gridY = startGY;
-    this.player = player;
+    this.gridX = gx;
+    this.gridY = gy;
     this.size = grid.tileSize;
-    this.x = gridX * size;
-    this.y = gridY * size + grid.offsetY;
+    this.x = gx * size;
+    this.y = gy * size + grid.offsetY;
     this.targetX = x;
     this.targetY = y;
+    loadAnimations();
+    currentAnim = idleDown;
+  }
+
+  void loadAnimations() {
+    walkUp = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
+    walkDown = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
+    walkLeft = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
+    walkRight = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
+    idleUp = new PImage[]{ loadImage("Player.png")};
+    idleDown = new PImage[]{ loadImage("Player.png") };
+    idleLeft = new PImage[]{ loadImage("Player.png") };
+    idleRight = new PImage[]{ loadImage("Player.png") };
   }
 
   void update() {
-    // Smooth movement toward target tile
     if (isMoving) {
       x = lerp(x, targetX, 0.3);
       y = lerp(y, targetY, 0.3);
+      timer++;
+      if (timer >= speed) {
+        timer = 0;
+        frame = (frame + 1) % currentAnim.length;
+      }
       if (dist(x, y, targetX, targetY) < 1) {
         x = targetX;
         y = targetY;
         isMoving = false;
+        frame = 0;
+        setIdleAnim();
       }
     }
   }
 
   void display() {
-    image(player, x, y);
-    player.resize(80,80);
+    image(currentAnim[frame], x, y, size, size);
+  }
+
+  void setIdleAnim() {
+    if (dir == "up") currentAnim = idleUp;
+    if (dir == "down") currentAnim = idleDown;
+    if (dir == "left") currentAnim = idleLeft;
+    if (dir == "right") currentAnim = idleRight;
   }
 
   void move(int dx, int dy) {
-    if (isMoving) return;  // already moving
+    if (isMoving) return;
+
+    if (dx == 1) { dir = "right"; currentAnim = walkRight; }
+    if (dx == -1) { dir = "left"; currentAnim = walkLeft; }
+    if (dy == 1) { dir = "down"; currentAnim = walkDown; }
+    if (dy == -1) { dir = "up"; currentAnim = walkUp; }
 
     int newGX = gridX + dx;
     int newGY = gridY + dy;
 
-    // Stay inside grid bounds
     if (newGX < 0 || newGX >= grid.cols || newGY < 0 || newGY >= grid.rows) return;
 
-    // Check if a pushable tile exists
     boolean pushed = false;
     for (PushableTile pt : grid.pushables) {
       if (pt.gridX == newGX && pt.gridY == newGY) {
         pushed = grid.pushTile(newGX, newGY, dx, dy);
-        if (!pushed) return; // Can't move if push blocked
+        if (!pushed) return;
         break;
       }
     }
 
-    // Check static collision (solids or unmovable pushables)
     if (!pushed && grid.isSolid(newGX, newGY)) return;
+    if (!pushed && grid.isOccupied(newGX, newGY, null)) return;
 
-    // Move player
     gridX = newGX;
     gridY = newGY;
     targetX = gridX * size;
     targetY = gridY * size + grid.offsetY;
+    frame = 0;
+    timer = 0;
     isMoving = true;
   }
 }
