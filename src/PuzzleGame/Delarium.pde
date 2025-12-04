@@ -266,18 +266,89 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   println("screen1");
   grid.setTileSprite(0, 1, 3, 0); // x, y, layer, sprite
   grid.setTileSprite(0, 2, 3, 0);
+  grid.setTileSprite(0, 3, 3, 0);
+  grid.setTileSprite(0, 4, 3, 0);
+  grid.setTileSprite(0, 5, 3, 0);
+  grid.setTileSprite(0, 6, 3, 0);
+  grid.setTileSprite(0, 7, 3, 0);
+  grid.setTileSprite(0, 8, 3, 0);
+  grid.setTileSprite(0, 9, 3, 0);
+  grid.setTileSprite(1, 7, 3, 0);
+  grid.setTileSprite(2, 7, 3, 0);
+  grid.setTileSprite(1, 9, 3, 0);
+  grid.setTileSprite(2, 9, 3, 0);
+  grid.setTileSprite(3, 2, 3, 0);
+  grid.setTileSprite(4, 2, 3, 0);
+  grid.setTileSprite(5, 2, 3, 0);
+  grid.setTileSprite(6, 2, 3, 0);
+  grid.setTileSprite(6, 3, 3, 0);
+  grid.setTileSprite(6, 4, 3, 0);
+  grid.setTileSprite(6, 5, 3, 0);
+  grid.setTileSprite(6, 6, 3, 0);
+  grid.setTileSprite(3, 3, 3, 0);
+  grid.setTileSprite(3, 4, 3, 0);
+  grid.setTileSprite(3, 5, 3, 0);
+  grid.setTileSprite(9, 1, 3, 0);
+  grid.setTileSprite(9, 2, 3, 0);
+  grid.setTileSprite(9, 3, 3, 0);
+  grid.setTileSprite(9, 4, 3, 0);
+  grid.setTileSprite(9, 5, 3, 0);
+  grid.setTileSprite(9, 6, 3, 0);
+  grid.setTileSprite(9, 7, 3, 0);
+  grid.setTileSprite(9, 8, 3, 0);
+  grid.setTileSprite(9, 9, 3, 0);
+  grid.setTileSprite(8, 5, 3, 0);
+  grid.setTileSprite(7, 9, 3, 0);
+  grid.setTileSprite(8, 9, 3, 0);
+  grid.setTileSprite(2, 3, 3, 0);
   grid.setSolid(0, 1, true); // x, y, solid
   grid.setSolid(0, 2, true);
-  grid.setSolid(2, 2, true);
+  grid.setSolid(0, 3, true);
+  grid.setSolid(0, 4, true);
+  grid.setSolid(0, 5, true);
+  grid.setSolid(0, 6, true);
+  grid.setSolid(0, 7, true);
+  grid.setSolid(0, 8, true);
+  grid.setSolid(0, 9, true);
+  grid.setSolid(1, 7, true);
+  grid.setSolid(2, 7, true);
+  grid.setSolid(1, 8, true);
+  grid.setSolid(1, 9, true);
+  grid.setSolid(2, 9, true);
+  grid.setSolid(3, 2, true);
+  grid.setSolid(4, 2, true);
+  grid.setSolid(5, 2, true);
+  grid.setSolid(6, 2, true);
+  grid.setSolid(6, 3, true);
+  grid.setSolid(6, 4, true);
+  grid.setSolid(6, 5, true);
+  grid.setSolid(6, 6, true);
+  grid.setSolid(3, 3, true);
+  grid.setSolid(3, 4, true);
+  grid.setSolid(3, 5, true);
+  grid.setSolid(9, 1, true);
+  grid.setSolid(9, 2, true);
+  grid.setSolid(9, 3, true);
+  grid.setSolid(9, 4, true);
+  grid.setSolid(9, 5, true);
+  grid.setSolid(9, 6, true);
+  grid.setSolid(9, 7, true);
+  grid.setSolid(9, 8, true);
+  grid.setSolid(9, 9, true);
+  grid.setSolid(8, 5, true);
+  grid.setSolid(8, 9, true);
+  grid.setSolid(7, 9, true);
+  
 
-  grid.addPushableTile(4, 4, 2, 1);
-  grid.addDoor(2, 2, 2);
+  grid.addPushableTile(6, 1, 2, 1);
+  grid.addDoor(1, 8, 2);
   //ADDING BUTTONS: (x, y (button location), PImage #,
-  // x, y (tile targeted), PImage for targeted sprite, PImage for origanal sprite, solid true or false)
-  // total of 7 ints and 1 boolean
-  grid.addButton(7, 4, 2, 2, 2, 3, 2, false, 1);
+  // x, y (tile targeted), PImage for targeted sprite, solid true or false)
+  // total of 6 ints and 1 boolean
+  grid.addButton(5, 3, 3, 1, 8, 3, 3, false, 1);
+  
 
-  player = new Player(grid,1,2);
+  player = new Player(grid, 4, 0);
 }
 
 void setup2() {
