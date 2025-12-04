@@ -56,12 +56,12 @@ void setup() {
   titlecredits = loadImage("titlecredits.png");
   background = loadImage("background.png");
 
-  tileSprites = new PImage[4];
+  tileSprites = new PImage[5];
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
   tileSprites[2] = loadImage("door.png"); // example
   tileSprites[3] = loadImage("doorOpen.png"); // example
-
+  tileSprites[4] = loadImage("fairyring.png");
 
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, 0);
@@ -236,6 +236,8 @@ void levelDraw() {
 
   btnPause.display();
   btnPause.hover();
+  
+  text("OPEN THE DOOR", 400, 45);
 }
 
 // | STORES AND CALLS THE LEVELS UP |
@@ -345,7 +347,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   //ADDING BUTTONS: (x, y (button location), PImage #,
   // x, y (tile targeted), PImage for targeted sprite, solid true or false)
   // total of 6 ints and 1 boolean
-  grid.addButton(5, 3, 3, 1, 8, 3, 3, false, 1);
+  grid.addButton(5, 3, 4, 1, 8, 3, 3, false, 1);
   
 
   player = new Player(grid, 4, 0);
