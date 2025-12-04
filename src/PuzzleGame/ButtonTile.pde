@@ -1,19 +1,19 @@
-
 class ButtonTile {
   int gridX, gridY;
   int tileSize, offsetY;
 
   PImage sprite;
 
-  int targetX, targetY;
-  int newSpriteIndex;
+  int targetX, targetY;        // tile the button affects
+  int newSpriteIndex;          // sprite to show when pressed
+  int revertSpriteIndex = -1;  // sprite to show when released
   boolean newSolid;
 
   int triggerNum = 1;
   int triggered = 0;
   boolean isPressed = false;
 
-  int oldSpriteIndex = -1;
+  // old state (optional, can be used for solid)
   boolean oldSolid;
 
   void display() {
