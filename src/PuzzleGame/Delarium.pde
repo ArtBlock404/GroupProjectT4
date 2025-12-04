@@ -1,3 +1,6 @@
+//ANGIE LIU -- UI, SCREEN MANAGER, LEVEL DESIGN, LEVEL SETUP
+//JONAH WHITE -- MAIN PROGRAMMING
+//MAIZE ROBSON -- GRAPHICS, ART
 
 // TABLE OF CONTENTS
 // 21 - 40: setup
@@ -371,27 +374,71 @@ void setup2() {
   grid.setTileSprite(0, 1, 3, 0);
   grid.setTileSprite(1, 1, 3, 0);
   grid.setTileSprite(2, 1, 3, 0);
-  grid.setTileSprite(3, 1, 3, 0);
+  grid.setTileSprite(3, 1, 3, 8);
   grid.setTileSprite(3, 2, 3, 0);
   grid.setTileSprite(3, 3, 3, 0);
-  grid.setTileSprite(3, 4, 3, 0);
+  grid.setTileSprite(3, 4, 3, 8);
   grid.setTileSprite(2, 4, 3, 0);
   grid.setTileSprite(1, 4, 3, 0);
-  grid.setTileSprite(9, 3, 3, 0);
-  grid.setTileSprite(8, 3, 3, 0);
-  grid.setTileSprite(7, 3, 3, 0);
-  grid.setTileSprite(6, 3, 3, 0);
+  grid.setTileSprite(9, 3, 3, 6);
+  grid.setTileSprite(8, 3, 3, 6);
+  grid.setTileSprite(7, 3, 3, 6);
+  grid.setTileSprite(6, 3, 3, 8);
   grid.setTileSprite(6, 4, 3, 0);
-  grid.setTileSprite(6, 5, 3, 0);
+  grid.setTileSprite(6, 5, 3, 8);
   grid.setTileSprite(6, 6, 3, 0);
-  
-  
+  grid.setTileSprite(7, 6, 3, 0);
+  grid.setTileSprite(5, 7, 3, 6);
+  grid.setTileSprite(4, 7, 3, 6);
+  grid.setTileSprite(3, 7, 3, 6);
+  grid.setTileSprite(9, 8, 3, 0);
+  grid.setTileSprite(9, 9, 3, 8);
+  grid.setTileSprite(0, 7, 3, 7);
+  grid.setTileSprite(0, 8, 3, 7);
+  grid.setTileSprite(0, 9, 3, 8);
+  grid.setTileSprite(1, 9, 3, 0);
+  grid.setTileSprite(2, 9, 3, 0);
+  grid.setTileSprite(5, 1, 3, 0);
+  grid.setTileSprite(8, 9, 3, 0);
+  grid.setTileSprite(6, 1, 3, 6);
+  grid.setTileSprite(7, 4, 3, 5);
+    
+  grid.setSolid(0, 0, true);
+  grid.setSolid(0, 1, true);
   grid.setSolid(1, 1, true);
   grid.setSolid(2, 1, true);
   grid.setSolid(3, 1, true);
+  grid.setSolid(3, 2, true);
+  grid.setSolid(3, 3, true);
+  grid.setSolid(3, 4, true);
+  grid.setSolid(2, 3, true);
+  grid.setSolid(9, 3, true);
+  grid.setSolid(8, 3, true);
+  grid.setSolid(7, 3, true);
+  grid.setSolid(6, 3, true);
+  grid.setSolid(6, 4, true);
+  grid.setSolid(6, 5, true);
+  grid.setSolid(6, 6, true);
+  grid.setSolid(7, 6, true);
+  grid.setSolid(5, 7, true);
+  grid.setSolid(4, 7, true);
+  grid.setSolid(3, 7, true);
+  grid.setSolid(9, 8, true);
+  grid.setSolid(9, 9, true);
+  grid.setSolid(0, 7, true);
+  grid.setSolid(0, 8, true);
+  grid.setSolid(0, 9, true);
+  grid.setSolid(1, 9, true);
+  grid.setSolid(2, 4, true);
+  grid.setSolid(1, 4, true);
+  grid.setSolid(5, 1, true);
+  grid.setSolid(8, 9, true);
+  grid.setSolid(6, 1, true);
   
   grid.addPushableTile(8, 1, 2, 1);
   grid.addDoor(2, 3, 2);
+  
+  grid.addButton(7, 4, 4, 2, 3, 3, 3, false, 1);
 
   player = new Player(grid,0,0);
 }
