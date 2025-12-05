@@ -26,7 +26,7 @@ char screen = 'M'; // M = main menu, S = settings, C = credits, P = play, R = pa
 PImage[] buttonSprites;
 PImage titlesettings, titlecredits, titlelogo, background, title, titlepaused;
 
-Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnMenu, btnReset;
+Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnMenu, btnReset, btnResume;
 
 int level = 1;
 int cols = 10;
@@ -45,7 +45,7 @@ void setup() {
   PixelFont = createFont("PixelFont.ttf", 32);
   textFont(PixelFont);
 
-  buttonSprites = new PImage[8];
+  buttonSprites = new PImage[9];
   buttonSprites[0] = loadImage("play.png");
   buttonSprites[1] = loadImage("settings.png");
   buttonSprites[2] = loadImage("back.png");
@@ -54,6 +54,7 @@ void setup() {
   buttonSprites[5] = loadImage("none.png");
   buttonSprites[6] = loadImage("none.png");
   buttonSprites[7] = loadImage("none.png");
+  buttonSprites[8] = loadImage("resume.png");
 
   // Images for titles/background
   titlesettings = loadImage("titlesettings.png");
@@ -82,6 +83,7 @@ void setup() {
   btnPause = new Button (10, 10, 80, 80, 50, 50, 4);
   btnMainMenu = new Button (320, 400, 200, 100, 400, 450, 5);
   btnReset = new Button (320, 600, 200, 100, 400, 600, 5);
+  btnResume = new Button (250,325,300,100,400,400, 8);
 
 
   tileSize = 800 / cols;
@@ -155,7 +157,7 @@ void mousePressed() {
     if (btnMainMenu.clicked()) { //probably need to add an if statement detecting what level it currently is
       screen = 'M';
       break;
-    } else if (btnBack.clicked()) {
+    } else if (btnResume.clicked()) {
       screen = 'P';
       break;
     } else if (btnReset.clicked()) {
@@ -214,8 +216,8 @@ void pausescreen() {
   background(#010031);
   image(background, 0, 0);
   image(titlepaused,200, 50);
-  btnBack.display();
-  btnBack.hover();
+  btnResume.display();
+  btnResume.hover();
   btnMainMenu.display();
   btnMainMenu.hover();
   btnReset.display();
