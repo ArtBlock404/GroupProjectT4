@@ -24,7 +24,7 @@ Player player;
 Button[] buttons = new Button[4];
 char screen = 'M'; // M = main menu, S = settings, C = credits, P = play, R = pause
 PImage[] buttonSprites;
-PImage titlesettings, titlecredits, titlelogo, background, title;
+PImage titlesettings, titlecredits, titlelogo, background, title, titlepaused;
 
 Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnMenu, btnReset;
 
@@ -50,7 +50,7 @@ void setup() {
   buttonSprites[1] = loadImage("settings.png");
   buttonSprites[2] = loadImage("back.png");
   buttonSprites[3] = loadImage("credits.png");
-  buttonSprites[4] = loadImage("none.png");
+  buttonSprites[4] = loadImage("cog.png");
   buttonSprites[5] = loadImage("none.png");
   buttonSprites[6] = loadImage("none.png");
   buttonSprites[7] = loadImage("none.png");
@@ -60,6 +60,7 @@ void setup() {
   titlecredits = loadImage("titlecredits.png");
   background = loadImage("background.png");
   title = loadImage("test1titleflowers.png");
+  titlepaused = loadImage("titlepaused.png");
 
   tileSprites = new PImage[10];
   tileSprites[0] = loadImage("Bush.png"); // example
@@ -212,7 +213,7 @@ void pausescreen() {
   //pause screen
   background(#010031);
   image(background, 0, 0);
-  text("PAUSED", 400, 100);
+  image(titlepaused,200, 50);
   btnBack.display();
   btnBack.hover();
   btnMainMenu.display();
