@@ -26,7 +26,7 @@ char screen = 'M'; // M = main menu, S = settings, C = credits, P = play, R = pa
 PImage[] buttonSprites;
 PImage titlesettings, titlecredits, titlelogo, background, title, titlepaused;
 
-Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnMenu, btnReset, btnResume;
+Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnRestart, btnResume;
 
 int level = 1;
 int cols = 10;
@@ -51,8 +51,8 @@ void setup() {
   buttonSprites[2] = loadImage("back.png");
   buttonSprites[3] = loadImage("credits.png");
   buttonSprites[4] = loadImage("cog.png");
-  buttonSprites[5] = loadImage("none.png");
-  buttonSprites[6] = loadImage("none.png");
+  buttonSprites[5] = loadImage("mainmenu.png");
+  buttonSprites[6] = loadImage("restart.png");
   buttonSprites[7] = loadImage("none.png");
   buttonSprites[8] = loadImage("resume.png");
 
@@ -60,10 +60,10 @@ void setup() {
   titlesettings = loadImage("titlesettings.png");
   titlecredits = loadImage("titlecredits.png");
   background = loadImage("background.png");
-  title = loadImage("test1titleflowers.png");
+  title = loadImage("gametitle.png");
   titlepaused = loadImage("titlepaused.png");
 
-  tileSprites = new PImage[10];
+  tileSprites = new PImage[11];
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
   tileSprites[2] = loadImage("door.png"); // example
@@ -74,6 +74,7 @@ void setup() {
   tileSprites[7] = loadImage("wall.png");
   tileSprites[8] = loadImage("topWall.png");
   tileSprites[9] = loadImage("grass.png");
+  tileSprites[10] = loadImage("bush2.png");
 
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, 0);
@@ -81,9 +82,9 @@ void setup() {
   btnBack = new Button(300, 785, 200, 75, 400, 820, 2);
   btnCredits = new Button (280, 650, 200, 50, 385, 680, 3);
   btnPause = new Button (10, 10, 80, 80, 50, 50, 4);
-  btnMainMenu = new Button (320, 400, 200, 100, 400, 450, 5);
-  btnReset = new Button (320, 600, 200, 100, 400, 600, 5);
-  btnResume = new Button (250,325,300,100,400,400, 8);
+  btnMainMenu = new Button (245, 525, 300, 60, 395, 555, 5);
+  btnRestart = new Button (280, 625, 230, 60, 395, 655, 6);
+  btnResume = new Button (235,340,330,90,400,385, 8);
 
 
   tileSize = 800 / cols;
@@ -160,7 +161,7 @@ void mousePressed() {
     } else if (btnResume.clicked()) {
       screen = 'P';
       break;
-    } else if (btnReset.clicked()) {
+    } else if (btnRestart.clicked()) {
       screen = 'P';
       loadLevel(level);
       break;
@@ -220,8 +221,8 @@ void pausescreen() {
   btnResume.hover();
   btnMainMenu.display();
   btnMainMenu.hover();
-  btnReset.display();
-  btnReset.hover();
+  btnRestart.display();
+  btnRestart.hover();
 }
 
 // | DRAW FUNCTION FOR GAME SO IT DOESN't LOAD ON THE MAIN MENU |
@@ -245,9 +246,10 @@ void levelDraw() {
   grid.displayLayers(3, 4);
 
   grid.checkDoors(player);
-
+  
   btnPause.display();
   btnPause.hover();
+  
 
   fill(250);
   textSize(50);
@@ -265,8 +267,10 @@ void loadLevel(int lvl) {
     setup1();
   } else if (level == 2) {
     setup2();
-  } else {
-    setupEmptyLevel();
+  } else if (level == 3) {
+    setup3();
+  } else if (level == 4) {
+    setup4();
   }
 
   println("Loaded level" + level);
@@ -284,7 +288,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setTileSprite(0, 1, 2, 8); // x, y, layer, sprite
   grid.setTileSprite(0, 2, 2, 7);
   grid.setTileSprite(0, 3, 2, 0);
-  grid.setTileSprite(0, 4, 2, 0);
+  grid.setTileSprite(0, 4, 2, 10);
   grid.setTileSprite(0, 5, 2, 0);
   grid.setTileSprite(0, 6, 2, 8);
   grid.setTileSprite(0, 7, 2, 8);
@@ -292,7 +296,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setTileSprite(0, 9, 2, 7);
   grid.setTileSprite(1, 7, 2, 7);
   grid.setTileSprite(2, 7, 2, 7);
-  grid.setTileSprite(1, 9, 2, 0);
+  grid.setTileSprite(1, 9, 2, 10);
   grid.setTileSprite(2, 9, 2, 0);
   grid.setTileSprite(2, 2, 2, 6);
   grid.setTileSprite(4, 2, 2, 7);
@@ -301,14 +305,14 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setTileSprite(6, 3, 2, 7);
   grid.setTileSprite(6, 2, 2, 8);
   grid.setTileSprite(6, 4, 2, 0);
-  grid.setTileSprite(6, 5, 2, 0);
+  grid.setTileSprite(6, 5, 2, 10);
   grid.setTileSprite(6, 6, 2, 0);
   grid.setTileSprite(3, 3, 2, 7);
   grid.setTileSprite(3, 2, 2, 8);
   grid.setTileSprite(3, 4, 2, 0);
   grid.setTileSprite(3, 5, 2, 0);
   grid.setTileSprite(9, 1, 2, 7);
-  grid.setTileSprite(9, 2, 2, 0);
+  grid.setTileSprite(9, 2, 2, 10);
   grid.setTileSprite(9, 3, 2, 0);
   grid.setTileSprite(9, 4, 2, 8);
   grid.setTileSprite(9, 5, 2, 8);
@@ -320,7 +324,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setTileSprite(7, 9, 2, 8);
   grid.setTileSprite(8, 9, 2, 8);
   grid.setTileSprite(2, 3, 2, 0);
-  grid.setTileSprite(5, 3, 2, 5);
+  grid.setTileSprite(5, 3, 3, 5);
   grid.setTileSprite(0, 0, 2, 8);
   grid.setTileSprite(1, 0, 2, 7);
   grid.setTileSprite(9, 0, 2, 8);
@@ -333,6 +337,9 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setTileSprite(5, 4, 2, 6);
   grid.setTileSprite(2, 0, 2, 9);
   grid.setTileSprite(7, 0, 2, 9);
+  grid.setTileSprite(9, 8, 2, 9);
+  grid.setTileSprite(6, 9, 2, 9);
+  grid.setTileSprite(1, 6, 2, 9);
 
 
   grid.setSolid(0, 1, true); // x, y, solid
@@ -390,7 +397,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
 
   player = new Player(grid, 4, 0);
 
-  levelText = "Open The Door"; // Add this at the end of each level to add text
+  levelText = "Open the Door."; // Add this at the end of each level to add text
 }
 
 void setup2() {
@@ -400,33 +407,45 @@ void setup2() {
   grid.setTileSprite(1, 1, 3, 0);
   grid.setTileSprite(2, 1, 3, 0);
   grid.setTileSprite(3, 1, 3, 8);
-  grid.setTileSprite(3, 2, 3, 0);
+  grid.setTileSprite(3, 2, 3, 10);
   grid.setTileSprite(3, 3, 3, 0);
   grid.setTileSprite(3, 4, 3, 8);
   grid.setTileSprite(2, 4, 3, 0);
   grid.setTileSprite(1, 4, 3, 0);
-  grid.setTileSprite(9, 3, 3, 6);
-  grid.setTileSprite(8, 3, 3, 6);
-  grid.setTileSprite(7, 3, 3, 6);
+  grid.setTileSprite(9, 3, 3, 10);
+  grid.setTileSprite(8, 3, 3, 0);
+  grid.setTileSprite(7, 3, 3, 0);
   grid.setTileSprite(6, 3, 3, 8);
   grid.setTileSprite(6, 4, 3, 0);
   grid.setTileSprite(6, 5, 3, 8);
   grid.setTileSprite(6, 6, 3, 0);
   grid.setTileSprite(7, 6, 3, 0);
-  grid.setTileSprite(5, 7, 3, 6);
-  grid.setTileSprite(4, 7, 3, 6);
-  grid.setTileSprite(3, 7, 3, 6);
+  grid.setTileSprite(5, 7, 3, 0);
+  grid.setTileSprite(4, 7, 3, 10);
+  grid.setTileSprite(3, 7, 3, 0);
   grid.setTileSprite(9, 8, 3, 0);
   grid.setTileSprite(9, 9, 3, 8);
   grid.setTileSprite(0, 7, 3, 7);
   grid.setTileSprite(0, 8, 3, 7);
   grid.setTileSprite(0, 9, 3, 8);
   grid.setTileSprite(1, 9, 3, 0);
-  grid.setTileSprite(2, 9, 3, 0);
+  grid.setTileSprite(2, 9, 3, 10);
   grid.setTileSprite(5, 1, 3, 0);
-  grid.setTileSprite(8, 9, 3, 0);
-  grid.setTileSprite(6, 1, 3, 6);
+  grid.setTileSprite(8, 9, 3, 10);
+  grid.setTileSprite(6, 1, 3, 0);
   grid.setTileSprite(7, 4, 3, 5);
+  grid.setTileSprite(1, 3, 3, 9);
+  grid.setTileSprite(0, 9, 3, 8);
+  grid.setTileSprite(1, 8, 1, 9);
+  grid.setTileSprite(9, 7, 1, 9);
+  grid.setTileSprite(9, 6, 1, 9);
+  grid.setTileSprite(7, 5, 1, 9);
+  grid.setTileSprite(1, 6, 1, 9);
+  grid.setTileSprite(9, 0, 1, 6);
+  grid.setTileSprite(5, 4, 1, 6);
+  grid.setTileSprite(3, 9, 1, 6);
+  grid.setTileSprite(4, 9, 1, 6);
+  grid.setTileSprite(1, 0, 1, 6);
 
   grid.setSolid(0, 0, true);
   grid.setSolid(0, 1, true);
@@ -483,7 +502,7 @@ void setup3() {
 
   player = new Player(grid, 1, 2);
 
-  levelText = "Open The Door";
+  levelText = "Be Careful Where You Step.";
 }
 
 void setup4() {
