@@ -63,7 +63,7 @@ void setup() {
   title = loadImage("gametitle.png");
   titlepaused = loadImage("titlepaused.png");
 
-  tileSprites = new PImage[11];
+  tileSprites = new PImage[12];
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
   tileSprites[2] = loadImage("door.png"); // example
@@ -75,6 +75,8 @@ void setup() {
   tileSprites[8] = loadImage("topWall.png");
   tileSprites[9] = loadImage("grass.png");
   tileSprites[10] = loadImage("bush2.png");
+  tileSprites[11] = loadImage("hazard.png");
+
 
 
   btnPlay = new Button(200, 350, 400, 150, 400, 421, 0);
@@ -84,7 +86,7 @@ void setup() {
   btnPause = new Button (10, 10, 80, 80, 50, 50, 4);
   btnMainMenu = new Button (245, 525, 300, 60, 395, 555, 5);
   btnRestart = new Button (280, 625, 230, 60, 395, 655, 6);
-  btnResume = new Button (235,340,330,90,400,385, 8);
+  btnResume = new Button (235, 340, 330, 90, 400, 385, 8);
 
 
   tileSize = 800 / cols;
@@ -112,6 +114,8 @@ void draw() {
   case 'R':
     pausescreen();
     break;
+  case 'D':
+    deathscreen();
   }
 }
 
@@ -122,15 +126,6 @@ void keyPressed() {
   if (key == 's' || key == 'S' || keyCode == DOWN) player.move(0, 1);
   if (key == 'a' || key == 'A' || keyCode == LEFT) player.move(-1, 0);
   if (key == 'd' || key == 'D' || keyCode == RIGHT) player.move(1, 0);
-  
-  println("KeyCode:" + keyCode);
-  
-  switch(screen) {
-    case 'P':
-      if (keyCode == 9) {
-        screen = 'R';
-      }
-  }
 }
 
 // | DETECTS MOUSE CLICKS |
@@ -164,11 +159,20 @@ void mousePressed() {
       break;
     }
   case 'R':
-    if (btnMainMenu.clicked()) { //probably need to add an if statement detecting what level it currently is
+    if (btnMainMenu.clicked()) {
       screen = 'M';
       break;
     } else if (btnResume.clicked()) {
       screen = 'P';
+      break;
+    } else if (btnRestart.clicked()) {
+      screen = 'P';
+      loadLevel(level);
+      break;
+    }
+  case 'D':
+    if (btnMainMenu.clicked()) {
+      screen = 'M';
       break;
     } else if (btnRestart.clicked()) {
       screen = 'P';
@@ -186,10 +190,29 @@ void settingscreen() {
   background(#010031);
   image(background, 0, 0);
   fill(#010031);
-  btnBack.display();
-  btnBack.hover();
+  btnResume.display();
+  btnResume.hover();
+  btnMainMenu.display();
+  btnMainMenu.hover();
+  btnRestart.display();
+  btnRestart.hover();
   image(titlesettings, 175, 50);
 }
+
+void deathscreen() {
+  background(#010031);
+  image(background, 0, 0);
+  fill(#010031);
+  btnMainMenu.display();
+  btnMainMenu.hover();
+  btnRestart.display();
+  btnRestart.hover();
+  fill(250);
+  textSize(100);
+  text("YOU HAVE DIED", 400, 200);
+}
+
+
 
 void startscreen() {
   //Main menu
@@ -225,7 +248,7 @@ void pausescreen() {
   //pause screen
   background(#010031);
   image(background, 0, 0);
-  image(titlepaused,200, 50);
+  image(titlepaused, 200, 50);
   btnResume.display();
   btnResume.hover();
   btnMainMenu.display();
@@ -240,6 +263,7 @@ void levelDraw() {
 
   background(#010031);
   grid.displayLayers(0, 1);
+  grid.displayHazards();
   grid.displayDoors();
   grid.displayLayers(2, 2);
 
@@ -255,10 +279,11 @@ void levelDraw() {
   grid.displayLayers(3, 4);
 
   grid.checkDoors(player);
-  
+  grid.checkHazards(player);
+
   btnPause.display();
   btnPause.hover();
-  
+
 
   fill(250);
   textSize(50);
@@ -356,6 +381,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setSolid(0, 0, true);
   grid.setSolid(8, 0, true);
   grid.setSolid(9, 0, true);
+  grid.setSolid(3, 7, true);
 
   grid.setSolid(0, 2, true);
   grid.setSolid(0, 3, true);
@@ -395,6 +421,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setSolid(7, 9, true);
   grid.setSolid(2, 3, true);
 
+  grid.addHazard(1, 3, 11);
 
   grid.addPushableTile(6, 1, 2, 1);
   grid.addDoor(1, 8, 2);
@@ -402,7 +429,6 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   // x, y (tile targeted), PImage for targeted sprite, solid true or false)
   // total of 6 ints and 1 boolean
   grid.addButton(5, 3, 4, 1, 8, 3, 3, false, 1);
-
 
   player = new Player(grid, 4, 0);
 
