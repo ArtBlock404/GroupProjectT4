@@ -425,7 +425,7 @@ void setup1() { // each level should have a corresponding setup+levelnumber
   grid.setSolid(7, 9, true);
   grid.setSolid(2, 3, true);
 
-  grid.addHazard(1, 3, 11);
+  
 
   grid.addPushableTile(6, 1, 2, 1);
   grid.addDoor(1, 8, 2);
@@ -528,18 +528,23 @@ void setup2() {
 
 void setup3() {
   grid.setTileSprite(1, 1, 0, 0);
-  grid.setSolid(1, 1, true);
   grid.setTileSprite(2, 1, 0, 0);
-  grid.setSolid(2, 1, true);
   grid.setTileSprite(3, 1, 0, 0);
-  grid.setSolid(3, 1, true);
   grid.setTileSprite(3, 2, 0, 0);
+  
+  grid.addHazard(1, 3, 11);
+  
+  grid.setSolid(1, 1, true);
+  grid.setSolid(2, 1, true);
+  grid.setSolid(3, 1, true);
   grid.setSolid(3, 2, true);
+
   grid.addPushableTile(4, 4, 2, 0);
-
   grid.addDoor(8, 8, 1);
+  
+  grid.addButton(7, 4, 4, 2, 3, 3, 3, false, 1);
 
-  player = new Player(grid, 1, 2);
+  player = new Player(grid, 9, 0);
 
   levelText = "Be Careful Where You Step.";
 }
@@ -566,5 +571,3 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
-
-
