@@ -207,8 +207,8 @@ class Grid {
   }
 
   void checkHazards(Player p) {
-    for (HazardTile h : hazards) {
-      if (h.isOnHazard(p)) {
+    for (HazardTile t : hazards) {
+      if (t.isOnHazard(p)) {
         onHazardTriggered();
         return;
       }
@@ -216,6 +216,8 @@ class Grid {
   }
 
   void onHazardTriggered() {
+    screen = 'D';
+    
     println("you have died");
   }
 }
