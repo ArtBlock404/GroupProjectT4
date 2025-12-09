@@ -29,14 +29,14 @@ class Player {
   }
 
   void loadAnimations() {
-    walkUp = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
+    walkUp = new PImage[]{ loadImage("PlayerBack1.png"), loadImage("PlayerBack1.png"), loadImage("PlayerBack1.png") };
     walkDown = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
-    walkLeft = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
-    walkRight = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
-    idleUp = new PImage[]{ loadImage("Player.png")};
+    walkLeft = new PImage[]{ loadImage("PlayerLeft1.png"), loadImage("PlayerLeft1.png"), loadImage("PlayerLeft1.png") };
+    walkRight = new PImage[]{ loadImage("PlayerRight1.png"), loadImage("PlayerRight1.png"), loadImage("PlayerRight1.png") };
+    idleUp = new PImage[]{ loadImage("PlayerBack1.png")};
     idleDown = new PImage[]{ loadImage("Player.png") };
-    idleLeft = new PImage[]{ loadImage("Player.png") };
-    idleRight = new PImage[]{ loadImage("Player.png") };
+    idleLeft = new PImage[]{ loadImage("PlayerLeft1.png") };
+    idleRight = new PImage[]{ loadImage("PlayerRight1.png") };
   }
 
   void update() {
