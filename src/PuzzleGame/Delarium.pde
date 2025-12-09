@@ -126,6 +126,14 @@ void keyPressed() {
   if (key == 's' || key == 'S' || keyCode == DOWN) player.move(0, 1);
   if (key == 'a' || key == 'A' || keyCode == LEFT) player.move(-1, 0);
   if (key == 'd' || key == 'D' || keyCode == RIGHT) player.move(1, 0);
+
+  switch(screen) {
+      case 'P':
+        if (keyCode == 9) {
+          screen = 'R';
+          break;
+        }
+    }
 }
 
 // | DETECTS MOUSE CLICKS |
@@ -558,4 +566,5 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
