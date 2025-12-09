@@ -190,12 +190,8 @@ void settingscreen() {
   background(#010031);
   image(background, 0, 0);
   fill(#010031);
-  btnResume.display();
-  btnResume.hover();
-  btnMainMenu.display();
-  btnMainMenu.hover();
-  btnRestart.display();
-  btnRestart.hover();
+  btnBack.display();
+  btnBack.hover();
   image(titlesettings, 175, 50);
 }
 
@@ -562,3 +558,4 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
