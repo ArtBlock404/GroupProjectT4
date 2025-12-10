@@ -1,3 +1,7 @@
+
+//This is the player class, it has the images that animate the player and the code for the player movement.
+//The player moves one tile of space every key press, unless it detects a solid or is currently moving.
+
 class Player {
   int gridX, gridY;
   float x, y;
@@ -29,10 +33,10 @@ class Player {
   }
 
   void loadAnimations() {
-    walkUp = new PImage[]{ loadImage("PlayerBack1.png"), loadImage("PlayerBack1.png"), loadImage("PlayerBack1.png") };
-    walkDown = new PImage[]{ loadImage("Player.png"), loadImage("Player.png"), loadImage("Player.png") };
-    walkLeft = new PImage[]{ loadImage("PlayerLeft1.png"), loadImage("PlayerLeft1.png"), loadImage("PlayerLeft1.png") };
-    walkRight = new PImage[]{ loadImage("PlayerRight1.png"), loadImage("PlayerRight1.png"), loadImage("PlayerRight1.png") };
+    walkUp = new PImage[]{ loadImage("PlayerBack1.png"), loadImage("PlayerBack2.png"), loadImage("PlayerBack2.png") };
+    walkDown = new PImage[]{ loadImage("Player.png"), loadImage("Player2.png"), loadImage("Player2.png") };
+    walkLeft = new PImage[]{ loadImage("PlayerLeft1.png"), loadImage("PlayerLeft2.png"), loadImage("PlayerLeft2.png") };
+    walkRight = new PImage[]{ loadImage("PlayerRight1.png"), loadImage("PlayerRight2.png"), loadImage("PlayerRight2.png") };
     idleUp = new PImage[]{ loadImage("PlayerBack1.png")};
     idleDown = new PImage[]{ loadImage("Player.png") };
     idleLeft = new PImage[]{ loadImage("PlayerLeft1.png") };
@@ -103,3 +107,4 @@ class Player {
     isMoving = true;
   }
 }
+
