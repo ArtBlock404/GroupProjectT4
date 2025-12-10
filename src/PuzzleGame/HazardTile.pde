@@ -1,3 +1,6 @@
+
+This is the hazard tile, it changes the scene when it detects a player, same as the door tile
+
 class HazardTile {
   int gridX, gridY;
   int tileSize;
@@ -22,3 +25,4 @@ class HazardTile {
     return p.gridX == gridX && p.gridY == gridY && !p.isMoving;
   }
 }
+
