@@ -1,3 +1,7 @@
+
+// this is the grid, it gives the gx and gy of all the tiles and places them on the screen when called.
+// it contains the methods for calling the tiles, buttonTiles, DoorTiles, HazardTiles, and PushableTiles
+
 class Grid {
   int cols, rows;
   int tileSize;
