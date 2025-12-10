@@ -1,3 +1,7 @@
+
+// This is the button tile class, it activates when it detects a pushable object on top of it triggering another block to not be solid.
+// This will only happen when the set umber of buttons are triggered
+
 class ButtonTile {
   int gridX, gridY;
   int tileSize, offsetY;
