@@ -1,3 +1,7 @@
+
+// these are the tiles that are called to the grid for reguar tiles with no special properties
+// their images and solid state are set in the main tab
+
 class Tile {
   int gridX, gridY;
   int size;
@@ -48,3 +52,4 @@ class Tile {
     return -1;
   }
 }
+
