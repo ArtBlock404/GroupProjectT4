@@ -1,3 +1,6 @@
+// this is the door tile class, it changs the level my loading the next level and deleting the current level.
+// this triggers when it detects the player on top of it, the same way as the hazard tiles
+
 class DoorTile {
   int gridX, gridY;
   int tileSize;
@@ -38,3 +41,4 @@ class DoorTile {
     return false;
   }
 }
+
