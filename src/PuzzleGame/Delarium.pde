@@ -24,7 +24,7 @@ Player player;
 Button[] buttons = new Button[4];
 char screen = 'M'; // M = main menu, S = settings, C = credits, P = play, R = pause
 PImage[] buttonSprites;
-PImage titlesettings, titlecredits, titlelogo, background, title, titlepaused;
+PImage titlesettings, titlecredits, titlelogo, background, title, titlepaused, titledied;
 
 Button btnPlay, btnSettings, btnCredits, btnBack, btnPause, btnMainMenu, btnRestart, btnResume;
 
@@ -62,6 +62,7 @@ void setup() {
   background = loadImage("background.png");
   title = loadImage("gametitle.png");
   titlepaused = loadImage("titlepaused.png");
+  titledied = loadImage("titledied.png");
 
   tileSprites = new PImage[12];
   tileSprites[0] = loadImage("Bush.png"); // example
@@ -143,7 +144,7 @@ void mousePressed() {
   case 'M':
     if (btnPlay.clicked()) {
       screen = 'P';
-      //loadLevel(5); // change this to load a specific level
+      loadLevel(4); // change this to load a specific level
       break;
     } else if (btnSettings.clicked()) {
       screen = 'S';
@@ -214,7 +215,7 @@ void deathscreen() {
   btnRestart.hover();
   fill(250);
   textSize(100);
-  text("YOU HAVE DIED", 400, 200);
+  image(titledied, 175, 250);
 }
 
 
