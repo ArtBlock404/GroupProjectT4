@@ -245,10 +245,17 @@ void creditscreen() {
   fill(255);
   textAlign(CENTER, CENTER);
   textMode(CENTER);
-  textSize(70);
+  textSize(60);
   btnBack.display();
   btnBack.hover();
   image(titlecredits, 200, 50);
+  text("Jonah White", 400,250);
+  text("Angie Liu", 400, 425 );
+  text("Maizie Robson", 400, 610);
+  textSize(40);
+  text("Lead Programmer,\n Assistant Artist, Debugging/Testing", 400, 325);
+  text("UI/UX Design,\n Level Design, Assistant Programmer, Graphics", 400, 500);
+  text("Lead Artist,\n Storyboard, Game Design", 400, 680);
 }
 
 void pausescreen() {
@@ -727,5 +734,6 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
 
