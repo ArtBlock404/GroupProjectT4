@@ -249,9 +249,9 @@ void creditscreen() {
   text("Angie Liu", 400, 425 );
   text("Maizie Robson", 400, 610);
   textSize(40);
-  text("Lead Programmer,\n Assistant Artist, Debugging/Testing", 400, 325);
+  text("Lead Programmer,\n Lead Artist, Debugging/Testing", 400, 325);
   text("UI/UX Design,\n Level Design, Assistant Programmer, Graphics", 400, 500);
-  text("Lead Artist,\n Storyboard, Game Design", 400, 680);
+  text("Assistant Artist,\n Storyboard, Game Design", 400, 680);
 }
 
 void pausescreen() {
@@ -730,6 +730,7 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
 
 
