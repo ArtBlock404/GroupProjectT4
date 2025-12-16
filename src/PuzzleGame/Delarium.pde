@@ -143,7 +143,7 @@ void mousePressed() {
   case 'M':
     if (btnPlay.clicked()) {
       screen = 'P';
-      loadLevel(5); // change this to load a specific level
+      //loadLevel(5); // change this to load a specific level
       break;
     } else if (btnSettings.clicked()) {
       screen = 'S';
@@ -238,9 +238,9 @@ void startscreen() {
 
 void creditscreen() {
   //Credits
-  // Jonah: Lead Programmer, Assistant Artist, Debugging/Testing
+  // Jonah: Lead Programmer, Lead Artist, Debugging/Testing
   // Angie: UI/UX Design, Level Design, Assistant Programmer, Graphics
-  // Maizie: Lead Artist, Storyboard, Game Design
+  // Maizie: Assistant Artist, Storyboard, Game Design
   background (#010031);
   image(background, 0, 0);
   fill(255);
@@ -250,6 +250,14 @@ void creditscreen() {
   btnBack.display();
   btnBack.hover();
   image(titlecredits, 200, 50);
+  textSize(60);
+  text("Jonah White", 400, 250);
+  text("Angie Liu", 400, 425);
+  text("Maizie Robson", 400, 600);
+  textSize(35);
+  text("Lead Programmer,\n Lead Artist, Debugging/Testing", 400, 325);
+  text("UI/UX Design,\n Level Design, Assistant Programmer, Graphics", 400, 500);
+  text("Assistant Artist,\n Storyboard, Game Design", 400, 675);
 }
 
 void pausescreen() {
@@ -477,7 +485,7 @@ void setup2() {
   grid.setTileSprite(5, 1, 1, 0);
   grid.setTileSprite(8, 9, 1, 10);
   grid.setTileSprite(6, 1, 1, 0);
-  grid.setTileSprite(7, 4, 1, 5);
+  grid.setTileSprite(7, 4, 3, 5);
   grid.setTileSprite(1, 3, 1, 9);
   grid.setTileSprite(0, 9, 1, 8);
   grid.setTileSprite(1, 8, 1, 9);
@@ -554,7 +562,7 @@ void setup3() {
   grid.setTileSprite(2, 8, 1, 7);
   grid.setTileSprite(8, 9, 1, 10);
   grid.setTileSprite(9, 9, 1, 0);
-  grid.setTileSprite(1, 9, 1, 5);
+  grid.setTileSprite(1, 9, 3, 5);
 
   grid.setTileSprite(0, 0, 1, 6);
   grid.setTileSprite(3, 3, 1, 9);
@@ -639,7 +647,7 @@ void setup4() {
   grid.setTileSprite(9, 2, 1, 0);
 
 
-  grid.setTileSprite(8, 8, 1, 5);
+  grid.setTileSprite(8, 8, 3, 5);
   grid.setTileSprite(4, 0, 1, 9);
   grid.setTileSprite(9, 5, 1, 6);
   grid.setTileSprite(9, 4, 1, 9);
@@ -657,7 +665,6 @@ void setup4() {
   grid.addHazard(6, 2, 11);
   grid.addHazard(7, 2, 11);
   grid.addHazard(7, 5, 11);
-  grid.addHazard(4, 6, 11);
   grid.addHazard(3, 6, 11);
   grid.addHazard(2, 6, 11);
   grid.addHazard(7, 9, 11);
@@ -744,14 +751,10 @@ void setup5() {
   grid.setTileSprite(0, 1, 1, 6);
   grid.setTileSprite(0, 8, 1, 9);
 
-  levelText = "A Dificult Obstical";
+  levelText = "A Difficult Obstacle";
 }
 
 void setupEmptyLevel() { // just in case there is no next level so the game doesnt crash
 
   player = new Player(grid, 1, 2);
 }
-
-
-
-
