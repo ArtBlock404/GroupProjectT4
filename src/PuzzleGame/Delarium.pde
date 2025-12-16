@@ -214,6 +214,7 @@ void deathscreen() {
   fill(250);
   textSize(100);
   text("YOU HAVE DIED", 400, 200);
+  rect(250,200,450,130);
 }
 
 
@@ -730,6 +731,7 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
 
 
