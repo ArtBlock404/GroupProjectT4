@@ -236,10 +236,6 @@ void startscreen() {
 }
 
 void creditscreen() {
-  //Credits
-  // Jonah: Lead Programmer, Assistant Artist, Debugging/Testing
-  // Angie: UI/UX Design, Level Design, Assistant Programmer, Graphics
-  // Maizie: Lead Artist, Storyboard, Game Design
   background (#010031);
   image(background, 0, 0);
   fill(255);
@@ -734,6 +730,7 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
 
 
