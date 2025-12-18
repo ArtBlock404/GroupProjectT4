@@ -770,6 +770,106 @@ void setup5() {
 void setup6() {
   grid.setTileSprite(0, 0, 1, 10);
   grid.setTileSprite(1, 0, 1, 0);
+  grid.setTileSprite(0, 1, 1, 0);
+  grid.setTileSprite(2, 3, 1, 10);
+  grid.setTileSprite(3, 3, 1, 0);
+  grid.setTileSprite(4, 3, 1, 7);
+  grid.setTileSprite(3, 5, 1, 0);
+  grid.setTileSprite(3, 6, 1, 7);
+  grid.setTileSprite(4, 6, 1, 7);
+  grid.setTileSprite(0, 9, 1, 0);
+  grid.setTileSprite(1, 9, 1, 10);
+  grid.setTileSprite(2, 9, 1, 0);
+  grid.setTileSprite(3, 9, 1, 0); 
+  grid.setTileSprite(6, 2, 1, 10);
+  grid.setTileSprite(6, 3, 1, 10);
+  grid.setTileSprite(6, 4, 1, 0);
+  grid.setTileSprite(6, 5, 1, 0);
+  grid.setTileSprite(6, 6, 1, 0);
+  grid.setTileSprite(7, 3, 1, 10);
+  grid.setTileSprite(9, 6, 1, 0);
+  grid.setTileSprite(9, 9, 1, 10);
+  grid.setTileSprite(8, 9, 1, 8);
+  grid.setTileSprite(7, 9, 1, 8);
+  grid.setTileSprite(5, 6, 1, 0);
+  grid.setTileSprite(5, 3, 1, 7);
+  grid.setTileSprite(9, 8, 1, 7);
+  grid.setTileSprite(7, 6, 1, 12);
+  
+
+
+  grid.setTileSprite(1, 1, 3, 5);
+  grid.setTileSprite(9, 7, 3, 5);
+  grid.setTileSprite(0, 8, 1, 9);
+  grid.setTileSprite(3, 7, 1, 6);
+  grid.setTileSprite(6, 9, 1, 6);
+  grid.setTileSprite(7, 4, 1, 9);
+  grid.setTileSprite(9, 0, 1, 6);
+  grid.setTileSprite(5, 2, 1, 9);
+  grid.setTileSprite(3, 0, 1, 9);
+  grid.setTileSprite(6, 1, 1, 6);
+  grid.setTileSprite(4, 4, 1, 6);
+  
+  
+
+  grid.addHazard(0, 3, 11);
+  grid.addHazard(3, 1, 11);
+  grid.addHazard(0, 6, 11);
+  grid.addHazard(1, 6, 11);
+  grid.addHazard(2, 6, 11);
+  grid.addHazard(8, 3, 11);
+  grid.addHazard(7, 8, 11);
+  grid.addHazard(8, 6, 11);
+  grid.addHazard(1, 3, 11);
+ 
+
+
+  grid.setSolid(0, 0, true);
+  grid.setSolid(1, 0, true);
+  grid.setSolid(0, 1, true);
+  grid.setSolid(2, 3, true);
+  grid.setSolid(3, 3, true);
+  grid.setSolid(4, 3, true);
+  grid.setSolid(3, 5, true);
+  grid.setSolid(3, 6, true);
+  grid.setSolid(4, 6, true);
+  grid.setSolid(0, 9, true);
+  grid.setSolid(1, 9, true);
+  grid.setSolid(2, 9, true);
+  grid.setSolid(3, 9, true);
+  grid.setSolid(6, 2, true);
+  grid.setSolid(6, 3, true);
+  grid.setSolid(6, 4, true);
+  grid.setSolid(6, 5, true);
+  grid.setSolid(6, 6, true);
+  grid.setSolid(7, 3, true);
+  grid.setSolid(9, 6, true);
+  grid.setSolid(9, 9, true);
+  grid.setSolid(8, 9, true);
+  grid.setSolid(7, 9, true);
+  grid.setSolid(5, 6, true);
+  grid.setSolid(5, 3, true);
+  grid.setSolid(9, 8, true);
+  grid.setSolid(7, 6, true);
+  
+ 
+
+
+  grid.addPushableTile(8, 1, 2, 1);
+  grid.addPushableTile(1, 8, 2, 1);
+  grid.addDoor(4, 5, 2);
+
+  grid.addButton(9, 7, 4, 7, 6, 13, 12, false, 1);
+  grid.addButton(1, 1, 4, 4, 5, 3, 2, false, 1);
+
+  player = new Player(grid, 4, 4);
+  
+  levelText = "Two Rocks!?";
+}
+
+void setup7() {
+  grid.setTileSprite(0, 0, 1, 10);
+  grid.setTileSprite(1, 0, 1, 0);
   grid.setTileSprite(8, 0, 1, 0);
   grid.setTileSprite(9, 0, 1, 10);
   grid.setTileSprite(4, 2, 1, 0);
@@ -851,60 +951,11 @@ void setup6() {
 
   player = new Player(grid, 8, 8);
   
-  levelText = "Two Rocks!?";
-}
-
-void setup7() {
-  grid.setTileSprite(0, 0, 1, 10);
-
-
-  grid.setTileSprite(8, 8, 3, 5);
-  
-
-  grid.addHazard(3, 3, 11);
- 
-
-
-  grid.setSolid(0, 0, true);
- 
-
-
-  grid.addPushableTile(7, 1, 2, 1);
-  grid.addDoor(2, 2, 2);
-
-  grid.addButton(8, 8, 4, 2, 2, 3, 3, false, 1);
-
-  player = new Player(grid, 0, 2);
-  
   levelText = "Roundabout.";
-}
-
-void setup8() {
-  grid.setTileSprite(0, 0, 1, 10);
-
-
-  grid.setTileSprite(8, 8, 3, 5);
-  
-
-  grid.addHazard(3, 3, 11);
- 
-
-
-  grid.setSolid(0, 0, true);
- 
-
-
-  grid.addPushableTile(7, 1, 2, 1);
-  grid.addDoor(2, 2, 2);
-
-  grid.addButton(8, 8, 4, 2, 2, 3, 3, false, 1);
-
-  player = new Player(grid, 0, 2);
-  
-  levelText = "Secret Passages.";
 }
 
 void setupEmptyLevel() { // just in case there is no next level so the game doesnt crash
 
   player = new Player(grid, 1, 2);
 }
+
