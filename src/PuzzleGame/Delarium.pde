@@ -960,26 +960,26 @@ void setup7() {
 }
 
 void setup8() {
-  grid.setTileSprite(1, 2, 1, 0);
+  grid.setTileSprite(1, 2, 1, 10);
   grid.setTileSprite(1, 3, 1, 0);
-  grid.setTileSprite(3, 1, 1, 0);
-  grid.setTileSprite(0, 5, 1, 0);
+  grid.setTileSprite(3, 1, 1, 8);
+  grid.setTileSprite(0, 5, 1, 10);
   grid.setTileSprite(1, 5, 1, 0);
   grid.setTileSprite(2, 5, 1, 0); 
-  grid.setTileSprite(2, 7, 1, 0);
+  grid.setTileSprite(2, 7, 1, 10);
   grid.setTileSprite(1, 7, 1, 0);
-  grid.setTileSprite(0, 7, 1, 0);
+  grid.setTileSprite(0, 7, 1, 10);
   grid.setTileSprite(0, 8, 1, 0);
   grid.setTileSprite(0, 9, 1, 0);
-  grid.setTileSprite(6, 2, 1, 0);
-  grid.setTileSprite(7, 2, 1, 0);
+  grid.setTileSprite(6, 2, 1, 7);
+  grid.setTileSprite(7, 2, 1, 7);
   grid.setTileSprite(5, 4, 1, 0);
-  grid.setTileSprite(6, 4, 1, 0);
+  grid.setTileSprite(6, 4, 1, 10);
   grid.setTileSprite(5, 5, 1, 0);
-  grid.setTileSprite(8, 7, 1, 0);
-  grid.setTileSprite(9, 7, 1, 0);
+  grid.setTileSprite(8, 7, 1, 7);
+  grid.setTileSprite(9, 7, 1, 7);
   grid.setTileSprite(9, 8, 1, 0);
-  grid.setTileSprite(9, 9, 1, 0);
+  grid.setTileSprite(9, 9, 1, 10);
   
 
 
@@ -990,7 +990,17 @@ void setup8() {
   grid.setTileSprite(8, 2, 1, 14);
   grid.setTileSprite(9, 2, 1, 14);
   grid.setTileSprite(2, 6, 1, 14);
-  
+  grid.setTileSprite(0, 1, 1, 6);
+  grid.setTileSprite(1, 1, 1, 6);
+  grid.setTileSprite(9, 0, 1, 9);
+  grid.setTileSprite(3, 4, 1, 6);
+  grid.setTileSprite(5, 6, 1, 9);
+  grid.setTileSprite(2, 9, 1, 9);
+  grid.setTileSprite(3, 9, 1, 6);
+  grid.setTileSprite(8, 9, 1, 9);
+  grid.setTileSprite(9, 3, 1, 6);
+  grid.setTileSprite(9, 4, 1, 9);
+    
   
 
   grid.addHazard(5, 0, 11);
@@ -1041,8 +1051,29 @@ void setup8() {
 }
 
 void setup9() {
-grid.setTileSprite(0, 0, 1, 10);
-  
+  grid.setTileSprite(0, 0, 1, 0;
+  grid.setTileSprite(1, 0, 1, 0);
+  grid.setTileSprite(2, 0, 1, 0);
+  grid.setTileSprite(0, 1, 1, 0);
+  grid.setTileSprite(0, 5, 1, 0);
+  grid.setTileSprite(0, 7, 1, 0);
+  grid.setTileSprite(0, 8, 1, 0);
+  grid.setTileSprite(0, 9, 1, 0);
+  grid.setTileSprite(1, 9, 1, 0);
+  grid.setTileSprite(2, 9, 1, 0);
+  grid.setTileSprite(5, 0, 1, 0);
+  grid.setTileSprite(6, 1, 1, 0);
+  grid.setTileSprite(5, 3, 1, 0);
+  grid.setTileSprite(4, 3, 1, 0);
+  grid.setTileSprite(3, 5, 1, 0);
+  grid.setTileSprite(3, 6, 1, 0);
+  grid.setTileSprite(5, 6, 1, 0);
+  grid.setTileSprite(6, 0, 1, 0);
+  grid.setTileSprite(8, 5, 1, 0);
+  grid.setTileSprite(9, 5, 1, 0);
+  grid.setTileSprite(9, 6, 1, 0);
+  grid.setTileSprite(9, 7, 1, 0);
+
 
 
   grid.setTileSprite(1, 2, 3, 5);
@@ -1068,7 +1099,7 @@ grid.setTileSprite(0, 0, 1, 10);
 
   player = new Player(grid, 8, 8);
   
-  levelText = "Roundabout.";
+  levelText = "Smoke and Mirrors.";
 }
 
 void setup10() {
@@ -1106,6 +1137,7 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
 
 
