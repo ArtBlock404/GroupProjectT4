@@ -147,7 +147,7 @@ void mousePressed() {
   case 'M':
     if (btnPlay.clicked()) {
       screen = 'P';
-      loadLevel(6); // change this to load a specific level
+      loadLevel(8); // change this to load a specific level
       break;
     } else if (btnSettings.clicked()) {
       screen = 'S';
@@ -817,7 +817,7 @@ void setup6() {
   
 
   grid.addHazard(0, 3, 11);
-  grid.addHazard(3, 1, 11);
+  grid.addHazard(3, 2, 11);
   grid.addHazard(0, 6, 11);
   grid.addHazard(1, 6, 11);
   grid.addHazard(2, 6, 11);
@@ -854,6 +854,8 @@ void setup6() {
   grid.setSolid(5, 3, true);
   grid.setSolid(9, 8, true);
   grid.setSolid(7, 6, true);
+  grid.setSolid(4, 5, true);
+  
   
  
 
@@ -887,7 +889,6 @@ void setup7() {
   grid.setTileSprite(7, 4, 1, 7);
   grid.setTileSprite(7, 5, 1, 10);
   grid.setTileSprite(7, 6, 1, 0);
-  grid.setTileSprite(9, 8, 1, 0);
   grid.setTileSprite(9, 9, 1, 10);
   grid.setTileSprite(8, 9, 1, 0);
   grid.setTileSprite(7, 9, 1, 0);
@@ -934,7 +935,6 @@ void setup7() {
   grid.setSolid(7, 4, true);
   grid.setSolid(7, 5, true);
   grid.setSolid(7, 6, true);
-  grid.setSolid(9, 8, true);
   grid.setSolid(9, 9, true);
   grid.setSolid(8, 9, true);
   grid.setSolid(7, 9, true);
@@ -942,7 +942,8 @@ void setup7() {
   grid.setSolid(0, 9, true);
   grid.setSolid(1, 9, true);
   grid.setSolid(9, 4, true);
- 
+  grid.setSolid(7, 3, true);
+  
 
 
   grid.addPushableTile(5, 1, 2, 1);
@@ -1032,6 +1033,7 @@ void setup8() {
   grid.setSolid(9, 7, true);
   grid.setSolid(9, 8, true);
   grid.setSolid(9, 9, true);
+  grid.setSolid(0, 6, true);
   
  
 
