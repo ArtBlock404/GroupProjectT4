@@ -64,7 +64,7 @@ void setup() {
   titlepaused = loadImage("titlepaused.png");
   titledied = loadImage("titledied.png");
 
-  tileSprites = new PImage[14];
+  tileSprites = new PImage[15];
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
   tileSprites[2] = loadImage("door.png"); // example
@@ -79,6 +79,7 @@ void setup() {
   tileSprites[11] = loadImage("hazard.png");
   tileSprites[12] = loadImage("gate.png");
   tileSprites[13] = loadImage("gateopen.png");
+  tileSprites[14] = loadImage("passage.png");
 
 
 
@@ -958,4 +959,5 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
