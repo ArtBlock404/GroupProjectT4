@@ -1,7 +1,3 @@
-
-// this is the grid, it gives the gx and gy of all the tiles and places them on the screen when called.
-// it contains the methods for calling the tiles, buttonTiles, DoorTiles, HazardTiles, and PushableTiles
-
 class Grid {
   int cols, rows;
   int tileSize;
@@ -80,17 +76,40 @@ class Grid {
   }
 
   boolean pushTile(int gx, int gy, int dx, int dy) {
-    for (PushableTile p : pushables) {
-      if (p.gridX == gx && p.gridY == gy) {
-        int nx = gx + dx, ny = gy + dy;
-        if (nx < 0 || nx >= cols || ny < 0 || ny >= rows) return false;
-        if (isOccupied(nx, ny, p)) return false;
-        p.moveTo(nx, ny);
-        return true;
-      }
+  PushableTile current = null;
+
+  // Find the pushable at this position
+  for (PushableTile p : pushables) {
+    if (p.gridX == gx && p.gridY == gy) {
+      current = p;
+      break;
     }
-    return false;
   }
+
+  if (current == null) return false;
+
+  int nx = gx + dx;
+  int ny = gy + dy;
+
+  // Bounds check
+  if (nx < 0 || nx >= cols || ny < 0 || ny >= rows) return false;
+
+  // If another pushable is in front, try to push it FIRST
+  for (PushableTile p : pushables) {
+    if (p != current && p.gridX == nx && p.gridY == ny) {
+      if (!pushTile(nx, ny, dx, dy)) return false;
+      break;
+    }
+  }
+
+  // If the tile is solid after chain pushing → fail
+  if (isSolid(nx, ny)) return false;
+
+  // Move this pushable
+  current.moveTo(nx, ny);
+  return true;
+}
+
 
   void updatePushables() {
     for (PushableTile p : pushables) p.update();
