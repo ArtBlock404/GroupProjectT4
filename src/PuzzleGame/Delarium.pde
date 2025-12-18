@@ -75,7 +75,7 @@ void setup() {
   tileSprites[7] = loadImage("wall.png");
   tileSprites[8] = loadImage("topWall.png");
   tileSprites[9] = loadImage("grass.png");
-  tileSprites[10] = loadImage("bush2.png");
+  tileSprites[10] = loadImage("Bush.png");
   tileSprites[11] = loadImage("hazard.png");
   tileSprites[12] = loadImage("gate.png");
   tileSprites[13] = loadImage("gateopen.png");
@@ -1180,4 +1180,5 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
 
