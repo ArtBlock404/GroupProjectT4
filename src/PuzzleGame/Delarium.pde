@@ -147,7 +147,7 @@ void mousePressed() {
   case 'M':
     if (btnPlay.clicked()) {
       screen = 'P';
-      //loadLevel(6); // change this to load a specific level
+      loadLevel(6); // change this to load a specific level
       break;
     } else if (btnSettings.clicked()) {
       screen = 'S';
@@ -796,7 +796,6 @@ void setup6() {
   grid.setTileSprite(9, 9, 1, 10);
   grid.setTileSprite(8, 9, 1, 8);
   grid.setTileSprite(7, 9, 1, 8);
-  grid.setTileSprite(5, 6, 1, 0);
   grid.setTileSprite(5, 3, 1, 7);
   grid.setTileSprite(9, 8, 1, 7);
   grid.setTileSprite(7, 6, 1, 12);
@@ -852,7 +851,6 @@ void setup6() {
   grid.setSolid(9, 9, true);
   grid.setSolid(8, 9, true);
   grid.setSolid(7, 9, true);
-  grid.setSolid(5, 6, true);
   grid.setSolid(5, 3, true);
   grid.setSolid(9, 8, true);
   grid.setSolid(7, 6, true);
@@ -1051,7 +1049,7 @@ void setup8() {
 }
 
 void setup9() {
-  grid.setTileSprite(0, 0, 1, 0;
+  grid.setTileSprite(0, 0, 1, 0);
   grid.setTileSprite(1, 0, 1, 0);
   grid.setTileSprite(2, 0, 1, 0);
   grid.setTileSprite(0, 1, 1, 0);
@@ -1137,8 +1135,3 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
-
-
-
-
-
