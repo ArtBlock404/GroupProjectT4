@@ -756,18 +756,61 @@ void setup5() {
   grid.setTileSprite(5, 7, 1, 7);
   grid.setTileSprite(4, 7, 1, 7);
   grid.setTileSprite(3, 7, 1, 7);
+  grid.setTileSprite(5, 1, 3, 5);
 
 
-  grid.setTileSprite(8, 8, 1, 5);
-  grid.setTileSprite(4, 0, 1, 9);
-  grid.setTileSprite(9, 5, 1, 6);
-  grid.setTileSprite(9, 4, 1, 9);
-  grid.setTileSprite(6, 3, 1, 6);
-  grid.setTileSprite(1, 4, 1, 9);
-  grid.setTileSprite(3, 7, 1, 6);
-  grid.setTileSprite(6, 9, 1, 9);
-  grid.setTileSprite(0, 1, 1, 6);
-  grid.setTileSprite(0, 8, 1, 9);
+  grid.setSolid(0, 0, true);
+  grid.setSolid(0, 1, true);
+  grid.setSolid(0, 2, true);
+  grid.setSolid(0, 3, true);
+  grid.setSolid(0, 4, true);
+  grid.setSolid(0, 5, true);
+  grid.setSolid(0, 6, true);
+  grid.setSolid(0, 7, true);
+  grid.setSolid(0, 8, true);
+  grid.setSolid(0, 9, true);
+  grid.setSolid(1, 0, true);
+  grid.setSolid(2, 0, true);
+  grid.setSolid(1, 9, true);
+  grid.setSolid(2, 9, true);
+  grid.setSolid(2, 4, true);
+  grid.setSolid(7, 4, true);
+  grid.setSolid(2, 6, true);
+  grid.setSolid(3, 6, true);
+  grid.setSolid(4, 6, true);
+  grid.setSolid(5, 6, true);
+  grid.setSolid(6, 6, true);
+  grid.setSolid(7, 6, true);
+  grid.setSolid(2, 7, true);
+  grid.setSolid(3, 7, true);
+  grid.setSolid(4, 7, true);
+  grid.setSolid(5, 7, true);
+  grid.setSolid(6, 7, true);
+  grid.setSolid(7, 7, true);
+  grid.setSolid(2, 8, true);
+  grid.setSolid(7, 7, true);
+  grid.setSolid(3, 8, true);
+
+  grid.addHazard(1, 2, 11);
+  grid.addHazard(2, 2, 11);
+  grid.addHazard(3, 2, 11);
+  grid.addHazard(4, 2, 11);
+  grid.addHazard(5, 2, 11);
+  grid.addHazard(6, 2, 11);
+  grid.addHazard(7, 2, 11);
+  grid.addHazard(8, 2, 11);
+
+
+
+  grid.addPushableTile(8, 7, 2, 1);
+  grid.addPushableTile(5, 4, 2, 1);
+
+  grid.addDoor(3, 8, 2);
+
+  grid.addButton(5, 1, 4, 3, 8, 3, 2, false, 1);
+
+  player = new Player(grid, 9, 4);
+
 
   levelText = "A Difficult Obstacle.";
 }
@@ -1137,3 +1180,4 @@ void setupEmptyLevel() { // just in case there is no next level so the game does
 
   player = new Player(grid, 1, 2);
 }
+
