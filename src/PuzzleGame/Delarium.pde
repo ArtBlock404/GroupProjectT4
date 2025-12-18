@@ -332,7 +332,11 @@ void loadLevel(int lvl) {
     setup7();
   } else if (level == 8) {
     setup8();
-  }
+  } else if (level == 9) {
+    setup9();
+  } else if (level == 10) {
+    setup10();
+  } 
 
   println("Loaded level" + level);
 }
@@ -955,9 +959,103 @@ void setup7() {
   levelText = "Roundabout.";
 }
 
+void setup8() {
+  grid.setTileSprite(0, 0, 1, 10);
+  
+
+
+  grid.setTileSprite(1, 2, 3, 5);
+  
+  
+
+  grid.addHazard(2, 1, 11);
+  
+ 
+
+
+  grid.setSolid(0, 0, true);
+  
+ 
+
+
+  grid.addPushableTile(5, 1, 2, 1);
+ 
+  grid.addDoor(7, 3, 2);
+
+  grid.addButton(1, 2, 4, 9, 4, 13, 12, false, 1);
+  
+
+  player = new Player(grid, 8, 8);
+  
+  levelText = "Roundabout.";
+}
+
+void setup9() {
+grid.setTileSprite(0, 0, 1, 10);
+  
+
+
+  grid.setTileSprite(1, 2, 3, 5);
+  
+  
+
+  grid.addHazard(2, 1, 11);
+  
+ 
+
+
+  grid.setSolid(0, 0, true);
+  
+ 
+
+
+  grid.addPushableTile(5, 1, 2, 1);
+ 
+  grid.addDoor(7, 3, 2);
+
+  grid.addButton(1, 2, 4, 9, 4, 13, 12, false, 1);
+  
+
+  player = new Player(grid, 8, 8);
+  
+  levelText = "Roundabout.";
+}
+
+void setup10() {
+grid.setTileSprite(0, 0, 1, 10);
+  
+
+
+  grid.setTileSprite(1, 2, 3, 5);
+  
+  
+
+  grid.addHazard(2, 1, 11);
+  
+ 
+
+
+  grid.setSolid(0, 0, true);
+  
+ 
+
+
+  grid.addPushableTile(5, 1, 2, 1);
+ 
+  grid.addDoor(7, 3, 2);
+
+  grid.addButton(1, 2, 4, 9, 4, 13, 12, false, 1);
+  
+
+  player = new Player(grid, 8, 8);
+  
+  levelText = "Roundabout.";
+}
+
 void setupEmptyLevel() { // just in case there is no next level so the game doesnt crash
 
   player = new Player(grid, 1, 2);
 }
+
 
 
