@@ -64,7 +64,7 @@ void setup() {
   titlepaused = loadImage("titlepaused.png");
   titledied = loadImage("titledied.png");
 
-  tileSprites = new PImage[15];
+  tileSprites = new PImage[19];
   tileSprites[0] = loadImage("Bush.png"); // example
   tileSprites[1] = loadImage("Rock.png"); // example
   tileSprites[2] = loadImage("door.png"); // example
@@ -80,6 +80,11 @@ void setup() {
   tileSprites[12] = loadImage("gate.png");
   tileSprites[13] = loadImage("gateopen.png");
   tileSprites[14] = loadImage("passage.png");
+  tileSprites[15] = loadImage("tallgrass.png");
+  tileSprites[16] = loadImage("tallgrass2.png");
+  tileSprites[17] = loadImage("tallgrass3.png");
+  tileSprites[18] = loadImage("tallgrass4.png");
+
 
 
 
@@ -132,12 +137,12 @@ void keyPressed() {
   if (key == 'd' || key == 'D' || keyCode == RIGHT) player.move(1, 0);
 
   switch(screen) {
-      case 'P':
-        if (keyCode == 9) {
-          screen = 'R';
-          break;
-        }
+  case 'P':
+    if (keyCode == 9) {
+      screen = 'R';
+      break;
     }
+  }
 }
 
 // | DETECTS MOUSE CLICKS |
@@ -147,7 +152,7 @@ void mousePressed() {
   case 'M':
     if (btnPlay.clicked()) {
       screen = 'P';
-      //loadLevel(9); // change this to load a specific level
+      loadLevel(11); // change this to load a specific level
       break;
     } else if (btnSettings.clicked()) {
       screen = 'S';
@@ -338,7 +343,7 @@ void loadLevel(int lvl) {
     setup10();
   } else if (level == 11) {
     setup11();
-  } 
+  }
 
   println("Loaded level" + level);
 }
@@ -552,7 +557,7 @@ void setup2() {
   grid.addButton(7, 4, 4, 2, 3, 3, 2, false, 1);
 
   player = new Player(grid, 0, 0);
-  
+
   levelText = "Distance.";
 }
 
@@ -722,7 +727,7 @@ void setup4() {
   grid.addButton(8, 8, 4, 2, 2, 3, 2, false, 1);
 
   player = new Player(grid, 0, 2);
-  
+
   levelText = "Ferris Wheel.";
 }
 
@@ -752,7 +757,7 @@ void setup5() {
   grid.setTileSprite(6, 2, 3, 0);
   grid.setTileSprite(6, 4, 3, 7);
   grid.setTileSprite(9, 9, 3, 0);
-  
+
   grid.setTileSprite(5, 1, 3, 5);
   grid.setTileSprite(9, 2, 1, 9);
   grid.setTileSprite(9, 3, 1, 6);
@@ -760,7 +765,7 @@ void setup5() {
   grid.setTileSprite(2, 0, 1, 9);
   grid.setTileSprite(3, 8, 1, 6);
   grid.setTileSprite(4, 5, 1, 9);
-  
+
 
 
   grid.setSolid(3, 7, true);
@@ -830,7 +835,7 @@ void setup6() {
   grid.setTileSprite(0, 9, 1, 0);
   grid.setTileSprite(1, 9, 1, 10);
   grid.setTileSprite(2, 9, 1, 0);
-  grid.setTileSprite(3, 9, 1, 0); 
+  grid.setTileSprite(3, 9, 1, 0);
   grid.setTileSprite(6, 2, 1, 10);
   grid.setTileSprite(6, 3, 1, 10);
   grid.setTileSprite(6, 4, 1, 0);
@@ -844,7 +849,7 @@ void setup6() {
   grid.setTileSprite(5, 3, 1, 7);
   grid.setTileSprite(9, 8, 1, 7);
   grid.setTileSprite(7, 6, 1, 12);
-  
+
 
 
   grid.setTileSprite(1, 1, 3, 5);
@@ -858,8 +863,8 @@ void setup6() {
   grid.setTileSprite(3, 0, 1, 9);
   grid.setTileSprite(6, 1, 1, 6);
   grid.setTileSprite(4, 4, 1, 6);
-  
-  
+
+
 
   grid.addHazard(0, 3, 11);
   grid.addHazard(3, 2, 11);
@@ -870,7 +875,7 @@ void setup6() {
   grid.addHazard(7, 8, 11);
   grid.addHazard(8, 6, 11);
   grid.addHazard(1, 3, 11);
- 
+
 
 
   grid.setSolid(0, 0, true);
@@ -900,9 +905,9 @@ void setup6() {
   grid.setSolid(9, 8, true);
   grid.setSolid(7, 6, true);
   grid.setSolid(4, 5, true);
-  
-  
- 
+
+
+
 
 
   grid.addPushableTile(8, 1, 2, 1);
@@ -913,7 +918,7 @@ void setup6() {
   grid.addButton(1, 1, 4, 4, 5, 3, 2, false, 1);
 
   player = new Player(grid, 4, 4);
-  
+
   levelText = "Two Rings!?";
 }
 
@@ -954,14 +959,14 @@ void setup7() {
   grid.setTileSprite(6, 4, 1, 9);
   grid.setTileSprite(9, 1, 1, 6);
   grid.setTileSprite(9, 7, 1, 9);
-  
+
 
   grid.addHazard(2, 1, 11);
   grid.addHazard(3, 2, 11);
   grid.addHazard(6, 3, 11);
   grid.addHazard(0, 5, 11);
   grid.addHazard(6, 8, 11);
- 
+
 
 
   grid.setSolid(0, 0, true);
@@ -988,7 +993,7 @@ void setup7() {
   grid.setSolid(1, 9, true);
   grid.setSolid(9, 4, true);
   grid.setSolid(7, 3, true);
-  
+
 
 
   grid.addPushableTile(5, 1, 2, 1);
@@ -999,7 +1004,7 @@ void setup7() {
   grid.addButton(9, 6, 4, 7, 3, 3, 2, false, 1);
 
   player = new Player(grid, 8, 8);
-  
+
   levelText = "Roundabout.";
 }
 
@@ -1009,7 +1014,7 @@ void setup8() {
   grid.setTileSprite(3, 1, 1, 8);
   grid.setTileSprite(0, 5, 1, 10);
   grid.setTileSprite(1, 5, 1, 0);
-  grid.setTileSprite(2, 5, 1, 0); 
+  grid.setTileSprite(2, 5, 1, 0);
   grid.setTileSprite(2, 7, 1, 10);
   grid.setTileSprite(1, 7, 1, 0);
   grid.setTileSprite(0, 7, 1, 10);
@@ -1024,7 +1029,7 @@ void setup8() {
   grid.setTileSprite(9, 7, 1, 7);
   grid.setTileSprite(9, 8, 1, 0);
   grid.setTileSprite(9, 9, 1, 10);
-  
+
 
 
   grid.setTileSprite(7, 1, 3, 5);
@@ -1044,8 +1049,8 @@ void setup8() {
   grid.setTileSprite(8, 9, 1, 9);
   grid.setTileSprite(9, 3, 1, 6);
   grid.setTileSprite(9, 4, 1, 9);
-    
-  
+
+
 
   grid.addHazard(5, 0, 11);
   grid.addHazard(6, 1, 11);
@@ -1054,8 +1059,8 @@ void setup8() {
   grid.addHazard(8, 5, 11);
   grid.addHazard(3, 8, 11);
   grid.addHazard(6, 8, 11);
-  
- 
+
+
 
 
   grid.setSolid(1, 2, true);
@@ -1079,19 +1084,19 @@ void setup8() {
   grid.setSolid(9, 8, true);
   grid.setSolid(9, 9, true);
   grid.setSolid(0, 6, true);
-  
- 
+
+
 
 
   grid.addPushableTile(7, 8, 2, 1);
- 
+
   grid.addDoor(0, 6, 2);
 
   grid.addButton(7, 1, 4, 0, 6, 3, 2, false, 1);
-  
+
 
   player = new Player(grid, 1, 6);
-  
+
   levelText = "Secret Passages.";
 }
 
@@ -1142,8 +1147,8 @@ void setup9() {
   grid.setTileSprite(5, 9, 1, 6);
   grid.setTileSprite(9, 9, 1, 9);
   grid.setTileSprite(8, 5, 3, 10);
-  
-  
+
+
 
   grid.addHazard(2, 4, 11);
   grid.addHazard(2, 5, 11);
@@ -1153,8 +1158,8 @@ void setup9() {
   grid.addHazard(1, 2, 11);
   grid.addHazard(2, 2, 11);
   grid.addHazard(7, 3, 11);
-  
- 
+
+
 
 
   grid.setSolid(0, 0, true);
@@ -1185,19 +1190,19 @@ void setup9() {
   grid.setSolid(7, 5, true);
   grid.setSolid(9, 2, true);
   grid.setSolid(9, 3, true);
-  
- 
+
+
 
 
   grid.addPushableTile(8, 6, 2, 1);
- 
+
   grid.addDoor(1, 8, 2);
 
   grid.addButton(5, 2, 4, 1, 8, 3, 2, false, 1);
-  
+
 
   player = new Player(grid, 2, 8);
-  
+
   levelText = "Smoke and Mirrors.";
 }
 
@@ -1225,7 +1230,7 @@ void setup10() {
   grid.setTileSprite(9, 8, 1, 10);
   grid.setTileSprite(7, 2, 1, 12);
 
-    
+
   grid.setTileSprite(1, 8, 3, 5);
   grid.setTileSprite(8, 9, 3, 5);
   grid.setTileSprite(1, 7, 3, 0);
@@ -1243,7 +1248,7 @@ void setup10() {
   grid.setTileSprite(0, 0, 1, 6);
   grid.setTileSprite(6, 7, 1, 9);
   grid.setTileSprite(5, 0, 1, 9);
-        
+
 
   grid.addHazard(3, 0, 11);
   grid.addHazard(4, 2, 11);
@@ -1252,7 +1257,7 @@ void setup10() {
   grid.addHazard(2, 8, 11);
   grid.addHazard(8, 6, 11);
   grid.addHazard(9, 4, 11);
-  
+
 
   grid.setSolid(0, 2, true);
   grid.setSolid(1, 2, true);
@@ -1276,25 +1281,24 @@ void setup10() {
   grid.setSolid(9, 8, true);
   grid.setSolid(7, 2, true);
   grid.setSolid(9, 1, true);
-  
+
 
   grid.addPushableTile(3, 2, 2, 1);
   grid.addPushableTile(6, 1, 2, 1);
- 
+
   grid.addDoor(9, 1, 2);
 
   grid.addButton(1, 8, 4, 7, 2, 13, 12, false, 1);
   grid.addButton(8, 9, 4, 9, 1, 3, 2, false, 1);
-  
+
 
   player = new Player(grid, 1, 1);
-  
-  levelText = "Final Test.";
+
+  levelText = "Time for a challenge";
 }
 
 void setup11() {
-  
-  grid.setTileSprite(2, 4, 1, 3);
+
   grid.setTileSprite(3, 1, 1, 6);
   grid.setTileSprite(4, 4, 1, 6);
   grid.setTileSprite(5, 6, 1, 6);
@@ -1317,17 +1321,28 @@ void setup11() {
   grid.setTileSprite(3, 7, 1, 9);
   grid.setTileSprite(8, 7, 1, 9);
   grid.setTileSprite(6, 7, 1, 9);
-  grid.setTileSprite(2, 1, 1, 9);
-  
+  grid.setTileSprite(2, 1, 1, 15);
+  grid.setTileSprite(2, 1, 3, 17);
+  grid.setTileSprite(3, 1, 3, 17);
+  grid.setTileSprite(3, 1, 1, 15);
+  grid.setTileSprite(4, 1, 3, 17);
+  grid.setTileSprite(4, 1, 1, 15);
+  grid.setTileSprite(3, 2, 3, 16);
+  grid.setTileSprite(3, 2, 1, 18);
+  grid.setTileSprite(4, 2, 3, 16);
+  grid.setTileSprite(4, 2, 1, 18);
+  grid.setTileSprite(2, 2, 3, 16);
+  grid.setTileSprite(2, 2, 1, 18);
+
   player = new Player(grid, 2, 4);
-  
-  levelText = "You have escaped...for now.";
-  
+  grid.addPushableTile(3, 2, 2, 1);
+
+
+  levelText = "Tall Grass";
 }
 
 void setupEmptyLevel() { // just in case there is no next level so the game doesnt crash
 
-  
+
   player = new Player(grid, 1, 2);
-  
 }
